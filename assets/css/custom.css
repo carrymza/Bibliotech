@@ -1,0 +1,263 @@
+/*Global*/
+.alpha {
+	padding-left: 0px !important;
+}
+.omega {
+	padding-right: 0px !important;
+}
+.hidden {
+	display: none;
+}
+.modal-body {
+	padding: 15px 40px;
+}
+#modals .solid-black, .solid-black {
+	border-right: 1px solid #e9ecef;
+}
+.label-style {
+	font-weight: bold;
+}
+.label-number {
+	font-size: 17px;
+	color: #4a6076;
+}
+.response h5 {
+	padding-bottom: 5px !important;
+	color: #e74c3c;
+}
+.dt-action .btn {
+	padding: 0px 8px;
+}
+.dt-action .btn i {
+	margin-right: 0px;
+}
+.dt-action .dropdown-toggle::after {
+	display: none;
+}
+.dt-action .dropdown-menu {
+	top: 5px !important;
+	left: -20px !important;
+}
+.image-dt {
+	width: 45px;
+	border-radius: 50%;
+	height: 45px;
+}
+input:read-only:hover {
+	cursor: not-allowed;
+}
+input:disabled:hover, button:disabled:hover {
+	cursor: not-allowed !important;
+}
+.datepicker-dropdown {
+	width: fit-content;
+}
+.datepicker td, .datepicker th {
+	padding: 5px 10px;
+}
+.datepicker-dropdown.datepicker-orient-left:after,
+.datepicker-dropdown.datepicker-orient-left:before {
+	right: unset;
+}
+.l-h-25 {
+	line-height: 25px;
+}
+.l-h-30 {
+	line-height: 30px;
+}
+.l-h-35 {
+	line-height: 35px;
+}
+.l-h-40 {
+	line-height: 40px;
+}
+.l-h-45 {
+	line-height: 45px;
+}
+.header-section hr{
+	margin-top: 0.3rem !important;
+	margin-bottom: 1.3rem !important;
+}
+.header-section button i {
+	margin-right: 0px !important;
+}
+.click {
+	cursor: pointer;
+}
+.header-section h5 {
+	margin-bottom: 0;
+	color: #757575;
+	font-size: 16px;
+	font-weight: 600;
+	text-transform: uppercase;
+	display: inline-block;
+	margin-right: 10px;
+}
+#address-information .address-img, #family-information .family-img {
+	width: 45%;
+	display: block;
+	margin: auto;
+}
+#modals #import.modal-lg {
+	max-width: 600px;
+}
+.modal .modal-header span {
+	opacity: 0.3;
+}
+#modals #feedback.modal-lg {
+	max-width: 600px;
+}
+.table td, .table th {
+	padding: .75rem 0.35rem;
+	vertical-align: top;
+	border-top: 1px solid #eceeef;
+}
+.fz13px{
+	font-size: 13px;
+}
+table.dataTable  tbody td {
+	line-height: 45px !important;
+}
+#close-document .btn {
+	padding: 0px 8px;
+}
+#close-document .btn i {
+	margin-right: 0px;
+}
+#close-document .dropdown-toggle::after {
+	display: none;
+}
+#close-document .dropdown-menu {
+	top: 0px !important;
+	left: -25px !important;
+}
+.pointer{
+	cursor: pointer;
+}
+
+/*Users*/
+#modals #users.modal-lg {
+	max-width: 800px;
+}
+.password .toogle-password {
+	font-size: 25px;
+	line-height: 40px;
+	cursor: pointer;
+}
+.owner i {
+	font-size: 20px;
+}
+
+
+/*Employees*/
+#modals #employees.modal-lg {
+	max-width: 950px;
+}
+#employees td {
+	line-height: 45px;
+}
+
+
+/*Students*/
+.family-information .card-header-img img {
+	max-width: 40%;
+}
+.family-information .user-card span {
+	font-weight: 600;
+}
+.add-element {
+	height: 130px;
+}
+.add-element i {
+	font-size: 130px;
+	color: rgba(0,0,0,.12);
+}
+#modals #address {
+	max-width: 600px;
+}
+.card-active {
+	border-top: 5px solid #13866f !important;
+}
+.health-information .toggle-option i {
+	font-size: 25px;
+	color: #a8a5a5;
+}
+.health-label {
+	margin-bottom: 0px;
+	line-height: 30px;
+	cursor: pointer;
+}
+
+/*Inventory*/
+#modals #import-inventory.modal-lg {
+	max-width: 600px;
+}
+
+
+/*Calendar*/
+#modals #calendar-event.modal-lg {
+	max-width: 850px;
+}
+
+
+/*Invoice*/
+#invoices-form .nav-tabs .slide {
+	background: #1abc9c;
+	width: 25% !important;
+	height: 4px;
+	position: absolute;
+	-webkit-transition: left .3s ease-out;
+	transition: left .3s ease-out;
+	bottom: 0
+}
+#invoices-form .table i {
+	line-height: 44px;
+	font-size: 22px;
+	color: #e74c3c;
+}
+#invoices-form .card-body table tr {
+	padding-bottom: 0px !important;
+}
+#invoices-form .table thead th:nth-child(1) {
+	width: 25%;
+}
+#invoices-form .table thead th:nth-child(2) {
+	width: 25%;
+}
+#invoices-form .table thead th:nth-child(3) {
+	width: 5%;
+}
+#invoices-form .table thead th:nth-child(4),
+#invoices-form .table thead th:nth-child(5),
+#invoices-form .table thead th:nth-child(6),
+#invoices-form .table thead th:nth-child(7) {
+	width: 10%;
+}
+#invoices-form .table thead th:last-child {
+	width: 5%;
+}
+#invoices-form .table tfoot tr {
+	padding-bottom: 0px !important;
+}
+#invoices-form .table tfoot tr td a {
+	display: block;
+	padding: 15px 0;
+	margin-top: 10px;
+	border: 1px dashed #ccc;
+	font-size: 14px;
+	text-align: center;
+	position: relative;
+}
+#invoices-form  .table tfoot tr td a i {
+	font-size: 14px;
+	font-weight: 600;
+}
+
+
+/*General Settings*/
+.general-settings table tr {
+	padding-bottom: 0px;
+}
+.general-settings table.dataTable tbody td {
+	line-height: 20px !important;
+}

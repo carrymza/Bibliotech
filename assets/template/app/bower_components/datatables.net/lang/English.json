@@ -1,0 +1,24 @@
+{
+	"sProcessing":     "Processing...",
+	"sLengthMenu":     "_MENU_",
+	"sZeroRecords":    "No results found",
+	"sEmptyTable":     "No data available to display",
+	"sInfo":           "Viewing from <strong>_START_ to _END_</strong> of _TOTAL_ rows",
+	"sInfoEmpty":      "Viewing <strong>0</strong> of 0 rows",
+	"sInfoFiltered":   "<span>(filter from _MAX_ rows)<span>",
+	"sInfoPostFix":    "",
+	"sSearch":         "",
+	"sUrl":            "",
+	"sInfoThousands":  ",",
+	"sLoadingRecords": "Loading...",
+	"oPaginate": {
+		"sFirst":    "<i class=\"ti-angle-double-left\"></i>",
+		"sLast":     "<i class=\"ti-angle-double-right\"></i>",
+		"sNext":     "<i class=\"ti-angle-right\"></i>",
+		"sPrevious": "<i class=\"ti-angle-left\"></i>"
+	},
+	"oAria": {
+		"sSortAscending":  ": Activate to sort the column ascending",
+		"sSortDescending": ": Activate to sort the column descending"
+	}
+}

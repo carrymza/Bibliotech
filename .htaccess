@@ -1,0 +1,13 @@
+RewriteEngine On
+RewriteBase /schoolapp_v1
+
+php_value max_input_vars 4000
+php_value suhosin.get.max_vars 4000
+php_value suhosin.post.max_vars 4000
+php_value suhosin.request.max_vars 4000
+
+RewriteCond %{REQUEST_URI} ^system.*
+RewriteRule ^(.*)$ /index.php [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php [L]
