@@ -11,7 +11,7 @@ class MY_Controller extends MX_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->app_name = 'SchoolApp';
+        $this->app_name = 'Bibliotech';
 		$this->form_validation->set_error_delimiters('<li>', '</li>');
     }
 }

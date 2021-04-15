@@ -275,7 +275,7 @@ let URL = {
             path = location.protocol + '//' +location.hostname + '/';
 
         if(host == 'localhost/') {
-            path += "schoolapp_v1/";
+            path += "Bibliotech/";
         }
 
         return path;

@@ -32,7 +32,5 @@ class APP_Controller extends MY_Controller
 		$this->expiration_date		= (isset($this->session->userdata('app')['userdata']['expiracy_date'])) ? $this->session->userdata('app')['userdata']['expiracy_date'] : date('Y-m-d');
 
 		$this->securities->is_logged_in($this->is_logged_in);
-		$this->securities->is_initial_settings_completed($this->initial_settings);
-//		$this->securities->check_subscription($this->expiration_date);
     }
 }

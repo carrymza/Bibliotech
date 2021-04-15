@@ -58,25 +58,3 @@ $route['login']							= 'session/index';
 $route['login/(.*)']            		= 'session/index/$1';
 $route['logout']						= 'session/logout';
 $route['register/(.*)']					= 'register/index/$1';
-
-
-/*Admin Section*/
-$route['admin']							= 'ad_session/index';
-$route['admin/login']					= 'ad_session/index';
-$route['admin/login/(.*)']            	= 'ad_session/index/$1';
-$route['admin/logout']					= 'ad_session/logout';
-$route['admin/recover']					= 'ad_session/recover';
-$route['admin/reset_send']				= 'ad_session/reset_send';
-$route['admin/new_password/(.*)']		= 'ad_session/new_password/$1';
-$route['admin/dashboard']				= 'ad_dashboard/index';
-
-
-/*Parents Section*/
-$route['pr']						= 'pr_session/index';
-$route['pr/login']					= 'pr_session/index';
-$route['pr/login/(.*)']           	= 'pr_session/index/$1';
-$route['pr/logout']				= 'pr_session/logout';
-$route['pr/recover']				= 'pr_session/recover';
-$route['pr/reset_send']			= 'pr_session/reset_send';
-$route['pr/new_password/(.*)']		= 'pr_session/new_password/$1';
-$route['pr/dashboard']				= 'pr_dashboard/index';

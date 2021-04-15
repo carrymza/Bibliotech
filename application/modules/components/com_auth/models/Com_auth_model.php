@@ -23,14 +23,4 @@ class Com_auth_model extends MY_Model
 	{
 		return $this->db->query("SELECT * FROM ai_settings WHERE schoolId = $schoolId")->row();
 	}
-
-	public function pr_auth($email, $password)
-	{
-		return $this->db->query("SELECT * FROM pr_users WHERE username = '$email' AND password = '$password'")->row();
-	}
-
-	public function ad_auth($email, $password)
-	{
-		return $this->db->query("SELECT * FROM ad_users WHERE username = '$email' AND password = '$password'")->row();
-	}
 }

@@ -28,61 +28,6 @@ class Com_auth extends MY_Controller
             return array(FALSE, 0);
         }
     }
-
-	public function pr_auth($email, $password)
-	{
-		$password =  md5($password);
-		$row      = $this->com_auth_model->pr_auth($email, $password);
-
-		if($row)
-		{
-			$session['pr'] = array(
-				"userdata" => array(
-					'is_pr_logged_in'      => 1,
-					'userId'            => $row->userId,
-					'full_name'         => $row->first_name.' '.$row->last_name,
-					'email'             => $row->email,
-					'image'             => ($row->image != '' || $row->image != null) ? $row->image : 'assets/template/app/default/assets/images/avatar-4.png',
-					'statusId' 			=> $row->statusId
-				)
-			);
-
-			$this->session->set_userdata(array("pr" => $session));
-			return TRUE;
-		}
-		else
-		{
-			return FALSE;
-		}
-	}
-
-	public function ad_auth($email, $password)
-	{
-		$password =  md5($password);
-		$row      = $this->com_auth_model->ad_auth($email, $password);
-
-		if($row)
-		{
-			$session['ad'] = array(
-				"userdata" => array(
-					'is_ad_logged_in'   => 1,
-					'userId'            => $row->userId,
-					'full_name'         => $row->first_name.' '.$row->last_name,
-					'email'             => $row->email,
-					'image'             => ($row->image != '' || $row->image != null) ? $row->image : 'assets/template/app/default/assets/images/avatar-4.png',
-					'statusId' 			=> $row->statusId
-				)
-			);
-
-			$this->session->set_userdata(array("ad" => $session));
-			return TRUE;
-		}
-		else
-		{
-			return FALSE;
-		}
-	}
-
 	private function get_user_data($row)
 	{
 		return array(

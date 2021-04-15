@@ -13,8 +13,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $config['modules_locations'] = array(
 	APPPATH.'modules/components/'       => '../modules/components/',
 	APPPATH.'modules/app/'       		=> '../modules/app/',
-	APPPATH.'modules/parents/'       	=> '../modules/parents/',
-	APPPATH.'modules/admin/'       		=> '../modules/admin/',
 );
 
 /*
@@ -39,7 +37,7 @@ $config['modules_locations'] = array(
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost/schoolapp_v1/';
+$config['base_url'] = 'http://localhost/Bibliotech/';
 
 /*
 |--------------------------------------------------------------------------
@@ -394,7 +392,7 @@ $config['encryption_key'] = '';
 |
 */
 $config['sess_driver'] = 'files';
-$config['sess_cookie_name'] = 'ci_schoolapp_v1';
+$config['sess_cookie_name'] = 'ci_Bibliotech';
 $config['sess_expiration'] = 7200;
 $config['sess_save_path'] = NULL;
 $config['sess_match_ip'] = FALSE;
