@@ -17,8 +17,7 @@ class MY_Model extends CI_Model
     public function __construct()
     {
         parent::__construct();
-		$this->schoolId		= (isset($this->session->userdata('app')['userdata']['schoolId'])) ? $this->session->userdata('app')['userdata']['schoolId'] : 0;
-		$this->userId		= (isset($this->session->userdata('app')['userdata']['userId'])) ? $this->session->userdata('app')['userdata']['userId'] : 0;
+//		$this->userId		= (isset($this->session->userdata('app')['userdata']['userId'])) ? $this->session->userdata('app')['userdata']['userId'] : 0;
     }
 
     /**
@@ -267,9 +266,9 @@ class MY_Model extends CI_Model
         return $return = ($count > 0) ? TRUE : FALSE;
     }
 
-    public function get_last_number($schoolId)
+    public function get_last_number()
 	{
-		return $this->db->query("SELECT IFNULL(MAX(number), 1000) + 1 AS number FROM $this->table_name WHERE schoolId = $schoolId AND statusId != 0 AND hidden = 0")->row()->number;
+		return $this->db->query("SELECT IFNULL(MAX(number), 1000) + 1 AS number FROM $this->table_name WHERE statusId != 0 AND hidden = 0")->row()->number;
 	}
 
 	public function exec_array_query($query)

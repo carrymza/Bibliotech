@@ -6,25 +6,21 @@ class Register extends MY_Controller
 	{
 		parent::__construct();
 		$this->title       = 'Registro';
-		$this->load->model('school/school_model');
 		$this->load->model('users/users_model');
-		$this->load->model('general_settings/settings_model');
 		$this->load->module('com_auth/controller/com_auth');
 	}
 
-	public function index($planId = FALSE)
+	public function index()
 	{
 		$this->redirect_if_logged_in($this->session->userdata('app')['userdata']['is_logged_in']);
 		$data                   = array();
-		$data['planId']			= $planId;
 		$this->load->view('register/register_view', $data);
 	}
 
-	public function make_registration($planId = FALSE)
+	public function make_registration()
 	{
 		$error 			= '';
 		$valid      	= TRUE;
-		$school_domain	= strtolower(clear_space(clean_string($this->input->post('school'))));
 		$email			= $this->input->post('email');
 		$password    	= $this->input->post('password');
 
@@ -32,11 +28,10 @@ class Register extends MY_Controller
 		$this->form_validation->set_rules('last_name', '<strong>Apellido</strong>', 'trim|required');
 		$this->form_validation->set_rules('email', '<strong>Email</strong>', 'trim|required|valid_email');
 		$this->form_validation->set_rules('password', '<strong>Contraseña</strong>', 'trim|required');
-		$this->form_validation->set_rules('school', '<strong>Centro Educativo</strong>', 'trim|required');
 
-		if($this->school_domain_check($school_domain) == FALSE)
+		if($this->email_check($email) == FALSE)
 		{
-			$error 		.= '<li>Ya existe una cuenta asociada a este <strong>Centro Educativo</strong>.</li>';
+			$error 		.= '<li>Ya existe una cuenta asociada a este <strong>Email</strong>.</li>';
 			$valid       = FALSE;
 		}
 
@@ -49,55 +44,31 @@ class Register extends MY_Controller
 		}
 		else
 		{
-			$data = array(
-				'domain'		=> $school_domain,
-				'name'    		=> $this->input->post('school'),
-				'planId'		=> ($planId == FALSE) ? 2 : $planId,
+			$user_data = array(
+				'first_name'    => $this->input->post('first_name'),
+				'last_name'     => $this->input->post('last_name'),
+				'username'      => $email,
 				'email'         => $email,
+				'password'      => md5($password),
+				'image'			=> '',
 				'statusId'		=> 1,
-				'image'         => '',
-				'creation_date' => timestamp_to_date(gmt_to_local(now(), 'UTC', FALSE), "Y-m-d H:i:s"),
-				'expiracy_date' => date("Y-m-d", strtotime(date("Y-m-d")."+ 30 days")),
-				'hidden'        => 0
+				'owner'			=> 1,
+				'typeId'     	=> 1,
+				'creation_date' => timestamp_to_date(gmt_to_local(now(), 'UTC', FALSE), "Y-m-d H:i:s")
 			);
 
-			if($schoolId = $this->school_model->save($data))
+			if($this->users_model->save($user_data))
 			{
-				$settings_Data = array(
-					'schoolId' 		=> $schoolId,
-					'currencyId' 	=> 1,
-					'language' 		=> 'es'
-				);
-
-				$this->settings_model->save($settings_Data);
-
-				$user_data = array(
-					'schoolId'		=> $schoolId,
-					'first_name'    => $this->input->post('first_name'),
-					'last_name'     => $this->input->post('last_name'),
-					'username'      => $email,
-					'email'         => $email,
-					'password'      => md5($password),
-					'image'			=> '',
-					'statusId'		=> 1,
-					'owner'			=> 1,
-					'typeId'     	=> 1,
-					'creation_date' => timestamp_to_date(gmt_to_local(now(), 'UTC', FALSE), "Y-m-d H:i:s")
-				);
-
-				if($this->users_model->save($user_data))
-				{
-					$this->com_auth->auth($school_domain, $email, $password);
-					echo json_encode(array("result" => 1, 'url' => base_url('initial_settings')));
-				}
+				$this->com_auth->auth($email, $password);
+				echo json_encode(array("result" => 1, 'url' => base_url('dashboard')));
 			}
 		}
 	}
 
-	private function school_domain_check($domain)
+	private function email_check($email)
 	{
-		$where = array('LOWER(REPLACE(domain," ",""))=' => clear_space($domain), 'hidden' => 0);
-		return ($this->school_model->in_table_by($where) > 0) ? FALSE : TRUE;
+		$where = array('LOWER(REPLACE(email," ",""))=' => clear_space($email), 'hidden' => 0);
+		return ($this->users_model->in_table_by($where) > 0) ? FALSE : TRUE;
 	}
 
 	private function redirect_if_logged_in($is_logged_in)

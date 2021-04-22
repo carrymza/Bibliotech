@@ -45,7 +45,6 @@
 						<i class="ti-menu"></i>
 					</a>
 					<a href="<?php echo base_url('dashboard');?>">
-<!--						<img class="img-fluid" src="--><?php //echo base_url();?><!--assets/template/app/default/assets/images/schoolapp.png" alt="Theme-Logo" />-->
 						<img class="img-fluid" src="<?php echo base_url();?>assets/template/app/default/assets/images/logo.png" alt="Theme-Logo" />
 					</a>
 					<a class="mobile-options">
@@ -55,9 +54,9 @@
 				<div class="navbar-container container-fluid">
 					<div>
 						<ul class="nav-left">
-<!--							<li>-->
-<!--								<div class="sidebar_toggle"><a href="javascript:void(0)"><i class="ti-menu"></i></a></div>-->
-<!--							</li>-->
+							<li>
+								<div class="sidebar_toggle"><a href="javascript:void(0)"><i class="ti-menu"></i></a></div>
+							</li>
 							<li>
 								<a href="javascript:void(0);" onclick="javascript:toggleFullScreen()">
 									<i class="ti-fullscreen"></i>
@@ -65,48 +64,14 @@
 							</li>
 						</ul>
 						<ul class="nav-right">
-							<li class="header-notification lng-dropdown">
-								<?php $lang = ($this->language == 'en') ? '<i class="flag-icon flag-icon-us m-r-5"></i> English' : '<i class="flag-icon flag-icon-do m-r-5"></i> Español';?>
-								<a href="javascript:void(0);" id="dropdown-active-item"><?php echo $lang;?></a>
-								<ul class="show-notification">
-									<li>
-										<a href="javascript:void(0);" class="change-language" data-lang="en">
-											<i class="flag-icon flag-icon-us m-r-5"></i> Ingles
-										</a>
-									</li>
-									<li>
-										<a href="javascript:void(0);" class="change-language" data-lang="es">
-											<i class="flag-icon flag-icon-do m-r-5"></i> Español
-										</a>
-									</li>
-								</ul>
-							</li>
-
-<!--							<li class="header-notification">-->
-<!--								<a href="javascript:void(0);" class="modal_trigger" data-target="#modals" data-toggle="modal" data-url="--><?php //echo base_url('wizard/open_wizard');?><!--" title="Asistente">-->
-<!--									<i class="ti-headphone-alt"></i>-->
-<!--									<span class="badge">5</span>-->
-<!--								</a>-->
-<!--							</li>-->
-<!--							-->
 							<li class="header-notification">
 								<a href="javascript:void(0);" title="Configuración">
 									<i class="ti-settings"></i>
 								</a>
 								<ul class="show-notification profile-notification">
 									<li>
-										<a href="<?php echo base_url('school');?>">
-											<i class="ti-home"></i> Centro Educativo
-										</a>
-									</li>
-									<li>
 										<a href="<?php echo base_url('general_settings');?>">
 											<i class="ti-settings"></i> Configuraci&oacute;n General
-										</a>
-									</li>
-									<li>
-										<a href="<?php echo base_url('subscription');?>">
-											<i class="icon-note"></i> Suscripci&oacute;n & Licencia
 										</a>
 									</li>
 								</ul>
@@ -123,11 +88,6 @@
 											<i class="ti-user"></i> Mi perfil
 										</a>
 									</li>
-<!--									<li>-->
-<!--										<a href="--><?php //echo base_url('lock_screen');?><!--">-->
-<!--											<i class="ti-lock"></i> Lock Screen-->
-<!--										</a>-->
-<!--									</li>-->
 									<li>
 										<a href="#">
 											<i class="ti-shift-right"></i> Cerrar Sesión
