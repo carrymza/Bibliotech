@@ -27,18 +27,8 @@
 			<div class="container-form">
 				<form id="recover-form" action="<?php echo base_url()?>session/recover_password" method="post">
 					<h2 class="title">Recuperar Contraseña</h2>
-					<div class="description">Introduce tu dominio y email para enviarte un correo con las instrucciones para recuperarla.</div>
+					<div class="description">Introduce  tu email para enviarte un correo con las instrucciones para recuperarla.</div>
 					<div class="response"></div>
-					<div class="input-div one">
-						<div class="i">
-							<i class="fas fa-home"></i>
-						</div>
-						<div class="div">
-							<h5>Dominio</h5>
-							<input type="text" name="domain" class="input" data-field="domain">
-							<span class="valid-message"></span>
-						</div>
-					</div>
 					<div class="input-div one">
 						<div class="i">
 							<i class="fas fa-user"></i>

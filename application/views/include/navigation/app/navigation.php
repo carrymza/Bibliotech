@@ -12,133 +12,33 @@
 					<span class="pcoded-mcaret"></span>
 				</a>
 			</li>
-			<?php $personal_active = ($this->router->fetch_class() == "students" || $this->router->fetch_class() == "teachers" || $this->router->fetch_class() == "parents") ? "active ".$menu_toggle : "";?>
-			<li class="pcoded-hasmenu <?php echo $personal_active;?>">
-				<a href="javascript:void(0)">
-					<span class="pcoded-micon"><i class="icon-people"></i></span>
-					<span class="pcoded-mtext" data-i18n="nav.dash.main">Personal</span>
-					<span class="pcoded-mcaret"></span>
-				</a>
-				<ul class="pcoded-submenu">
-					<?php $students_active = ($this->router->fetch_class() == "students") ? "active" : "";?>
-					<li class="<?php echo $students_active;?>">
-						<a href="<?php echo base_url('students');?>">
-							<span class="pcoded-micon"><i class="ti-home"></i></span>
-							<span class="pcoded-mtext">Estudiantes</span>
-							<span class="pcoded-mcaret"></span>
-						</a>
-					</li>
-					<?php $teachers_active = ($this->router->fetch_class() == "teachers") ? "active" : "";?>
-					<li class="<?php echo $teachers_active;?>">
-						<a href="<?php echo base_url('teachers');?>">
-							<span class="pcoded-micon"><i class="ti-home"></i></span>
-							<span class="pcoded-mtext">Docentes</span>
-							<span class="pcoded-mcaret"></span>
-						</a>
-					</li>
-					<?php $teachers_active = ($this->router->fetch_class() == "parents") ? "active" : "";?>
-					<li class="<?php echo $teachers_active;?>">
-						<a href="<?php echo base_url('parents');?>">
-							<span class="pcoded-micon"><i class="ti-home"></i></span>
-							<span class="pcoded-mtext">Padres / Tutores</span>
-							<span class="pcoded-mcaret"></span>
-						</a>
-					</li>
-				</ul>
-			</li>
-			<?php $calendar_active = ($this->router->fetch_class() == "calendar") ? "active" : "";?>
-			<li class="<?php echo $calendar_active;?>">
-				<a href="<?php echo base_url('calendar');?>">
-					<span class="pcoded-micon"><i class="ti-calendar"></i></span>
-					<span class="pcoded-mtext">Calendario</span>
+			<?php $students_active = ($this->router->fetch_class() == "students") ? "active" : "";?>
+			<li class="<?php echo $students_active;?>">
+				<a href="<?php echo base_url('students');?>">
+					<span class="pcoded-micon"><i class="ti-home"></i></span>
+					<span class="pcoded-mtext">Estudiantes</span>
 					<span class="pcoded-mcaret"></span>
 				</a>
 			</li>
-		</ul>
-
-		<div class="pcoded-navigatio-lavel" data-i18n="nav.category.navigation" menu-title-theme="theme5">Contables</div>
-		<ul class="pcoded-item pcoded-left-item">
-			<?php $incomes_active = ($this->router->fetch_class() == "invoices" || $this->router->fetch_class() == "receipt_income") ? "active ".$menu_toggle : "";?>
-			<li class="pcoded-hasmenu <?php echo $incomes_active;?>">
-				<a href="javascript:void(0)">
-					<span class="pcoded-micon"><i class="ti-wallet"></i></span>
-					<span class="pcoded-mtext" data-i18n="nav.dash.main">Ingresos</span>
+			<?php $teachers_active = ($this->router->fetch_class() == "teachers") ? "active" : "";?>
+			<li class="<?php echo $teachers_active;?>">
+				<a href="<?php echo base_url('teachers');?>">
+					<span class="pcoded-micon"><i class="ti-home"></i></span>
+					<span class="pcoded-mtext">Docentes</span>
 					<span class="pcoded-mcaret"></span>
 				</a>
-				<ul class="pcoded-submenu">
-					<?php $invoices_active = ($this->router->fetch_class() == "invoices") ? "active" : "";?>
-					<li class="<?php echo $invoices_active;?>">
-						<a href="<?php echo base_url('invoices');?>">
-							<span class="pcoded-micon"><i class="ti-user"></i></span>
-							<span class="pcoded-mtext">Facturas</span>
-							<span class="pcoded-mcaret"></span>
-						</a>
-					</li>
-					<?php $receipt_income_active = ($this->router->fetch_class() == "receipt_income") ? "active" : "";?>
-					<li class="<?php echo $receipt_income_active;?>">
-						<a href="<?php echo base_url('receipt_income');?>">
-							<span class="pcoded-micon"><i class="ti-user"></i></span>
-							<span class="pcoded-mtext">Recibo de Ingresos</span>
-							<span class="pcoded-mcaret"></span>
-						</a>
-					</li>
-				</ul>
-			</li>
-			<?php $expenses_active = ($this->router->fetch_class() == "expenses" || $this->router->fetch_class() == "payments") ? "active ".$menu_toggle : "";?>
-			<li class="pcoded-hasmenu <?php echo $expenses_active;?>">
-				<a href="javascript:void(0)">
-					<span class="pcoded-micon"><i class="icon-wallet"></i></span>
-					<span class="pcoded-mtext" data-i18n="nav.dash.main">Gastos</span>
-					<span class="pcoded-mcaret"></span>
-				</a>
-				<ul class="pcoded-submenu">
-					<?php $expense_active = ($this->router->fetch_class() == "expenses") ? "active" : "";?>
-					<li class="<?php echo $expense_active;?>">
-						<a href="<?php echo base_url('expenses');?>">
-							<span class="pcoded-micon"><i class="ti-user"></i></span>
-							<span class="pcoded-mtext">Gastos / Compras</span>
-							<span class="pcoded-mcaret"></span>
-						</a>
-					</li>
-					<?php $payments_active = ($this->router->fetch_class() == "payments") ? "active" : "";?>
-					<li class="<?php echo $payments_active;?>">
-						<a href="<?php echo base_url('payments');?>">
-							<span class="pcoded-micon"><i class="ti-user"></i></span>
-							<span class="pcoded-mtext">Pagos</span>
-							<span class="pcoded-mcaret"></span>
-						</a>
-					</li>
-				</ul>
 			</li>
 		</ul>
 
 		<div class="pcoded-navigatio-lavel" data-i18n="nav.category.navigation" menu-title-theme="theme5">Administrativo</div>
 		<ul class="pcoded-item pcoded-left-item">
-			<?php $personal_active = ($this->router->fetch_class() == "users" || $this->router->fetch_class() == "employees") ? "active ".$menu_toggle : "";?>
-			<li class="pcoded-hasmenu <?php echo $personal_active;?>">
-				<a href="javascript:void(0)">
+			<?php $inventory_active = ($this->router->fetch_class() == "users") ? "active" : "";?>
+			<li class="<?php echo $inventory_active;?>">
+				<a href="<?php echo base_url('users');?>">
 					<span class="pcoded-micon"><i class="icon-people"></i></span>
-					<span class="pcoded-mtext" data-i18n="nav.dash.main">Personal</span>
+					<span class="pcoded-mtext">Usuarios</span>
 					<span class="pcoded-mcaret"></span>
 				</a>
-				<ul class="pcoded-submenu">
-					<?php $users_active = ($this->router->fetch_class() == "users") ? "active" : "";?>
-					<li class="<?php echo $users_active;?>">
-						<a href="<?php echo base_url('users');?>">
-							<span class="pcoded-micon"><i class="ti-user"></i></span>
-							<span class="pcoded-mtext">Usuarios</span>
-							<span class="pcoded-mcaret"></span>
-						</a>
-					</li>
-					<?php $employees_active = ($this->router->fetch_class() == "employees") ? "active" : "";?>
-					<li class="<?php echo $employees_active;?>">
-						<a href="<?php echo base_url('employees');?>">
-							<span class="pcoded-micon"><i class="ti-user"></i></span>
-							<span class="pcoded-mtext">Empleados</span>
-							<span class="pcoded-mcaret"></span>
-						</a>
-					</li>
-				</ul>
 			</li>
 			<?php $inventory_active = ($this->router->fetch_class() == "inventory") ? "active" : "";?>
 			<li class="<?php echo $inventory_active;?>">
@@ -197,24 +97,6 @@
 						</a>
 					</li>
 				</ul>
-			</li>
-		</ul>
-
-		<div class="pcoded-navigatio-lavel" menu-title-theme="theme5">Soporte</div>
-		<ul class="pcoded-item pcoded-left-item">
-<!--			<li class="">-->
-<!--				<a href="http://flatable.phoenixcoded.net/doc" target="_blank">-->
-<!--					<span class="pcoded-micon"><i class="ti-file"></i></span>-->
-<!--					<span class="pcoded-mtext">Documentación</span>-->
-<!--					<span class="pcoded-mcaret"></span>-->
-<!--				</a>-->
-<!--			</li>-->
-			<li class="">
-				<a href="javascript:void(0);" class="modal_trigger" data-target="#modals" data-toggle="modal" data-url="<?php echo base_url('feedback/add');?>">
-					<span class="pcoded-micon"><i class="ti-layout-list-post"></i></span>
-					<span class="pcoded-mtext">Feedback</span>
-					<span class="pcoded-mcaret"></span>
-				</a>
 			</li>
 		</ul>
 	</div>

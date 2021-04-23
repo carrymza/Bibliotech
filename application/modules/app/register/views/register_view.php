@@ -26,7 +26,7 @@
 		</div>
 		<div class="login-content">
 			<div class="container-form">
-				<form id="register-form" action="<?php echo base_url('register/make_registration/'.$planId);?>" method="post">
+				<form id="register-form" action="<?php echo base_url('register/make_registration');?>" method="post">
 					<h2 class="title">Registrate</h2>
 					<div class="response"></div>
 					<div class="input-div one">
@@ -66,16 +66,6 @@
 						<div class="div">
 							<h5>Contraseña</h5>
 							<input type="password" name="password" class="input" data-field="password">
-							<span class="valid-message"></span>
-						</div>
-					</div>
-					<div class="input-div one">
-						<div class="i">
-							<i class="fas fa-home"></i>
-						</div>
-						<div class="div">
-							<h5>Centro Educativo</h5>
-							<input type="text" name="school" class="input" data-field="school">
 							<span class="valid-message"></span>
 						</div>
 					</div>

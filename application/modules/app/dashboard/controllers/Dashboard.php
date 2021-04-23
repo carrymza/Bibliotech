@@ -9,8 +9,6 @@ class Dashboard extends APP_Controller
 		$this->namespace   = 'app';
 		$this->moduleId		= 1;
 		$this->load->model('students/students_model');
-		$this->load->model('teachers/teachers_model');
-		$this->load->model('inventory/inventory_model');
 		$this->load->model('employees/employees_model');
 	}
 
@@ -25,10 +23,8 @@ class Dashboard extends APP_Controller
 	private function load_header_data()
 	{
 		return array(
-			'students'  => $this->students_model->count_by(array("schoolId" => $this->schoolId, "hidden" => 0)),
-			'teachers'  => $this->teachers_model->count_by(array("schoolId" => $this->schoolId, "hidden" => 0)),
-			'employees' => $this->employees_model->count_by(array("schoolId" => $this->schoolId, "hidden" => 0)),
-			'inventory' => $this->inventory_model->count_by(array("schoolId" => $this->schoolId, "hidden" => 0, 'typeId' => 1, 'belongs_to_student' => 0))
+			'students'  => $this->students_model->count_by(array("hidden" => 0)),
+			'employees' => $this->employees_model->count_by(array("hidden" => 0)),
 		);
 	}
 }

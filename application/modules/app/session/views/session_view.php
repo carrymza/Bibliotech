@@ -32,21 +32,11 @@
 					<div class="response"></div>
 					<div class="input-div one">
 						<div class="i">
-							<i class="fas fa-home"></i>
-						</div>
-						<div class="div">
-							<h5>Dominio</h5>
-							<input type="text" name="domain" class="input" data-field="domain">
-							<span class="valid-message"></span>
-						</div>
-					</div>
-					<div class="input-div one">
-						<div class="i">
 							<i class="fas fa-user"></i>
 						</div>
 						<div class="div">
-							<h5>Usuario</h5>
-							<input type="text" name="username" class="input" data-field="username">
+							<h5>Email</h5>
+							<input type="email" name="email" class="input" data-field="email">
 							<span class="valid-message"></span>
 						</div>
 					</div>
@@ -71,7 +61,7 @@
 		</div>
 	</div>
 	<div class="footer">
-		<p>SchoolApp &copy; <?php echo date("Y");?> <a href="<?php echo base_url();?>">T&eacute;rminos de Uso</a> & <a href="<?php echo base_url();?>">Pol&iacute;ticas de Privacidad</a></p>
+		<p>Bibliotech &copy; <?php echo date("Y");?> <a href="<?php echo base_url();?>">T&eacute;rminos de Uso</a> & <a href="<?php echo base_url();?>">Pol&iacute;ticas de Privacidad</a></p>
 	</div>
 </div>
 

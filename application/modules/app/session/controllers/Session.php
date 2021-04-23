@@ -24,22 +24,20 @@ class Session extends MY_Controller
 		echo $this->com_auth->js_session();
 	}
 
-	public function auth($domain  = FALSE, $username  = FALSE, $password  = FALSE)
+	public function auth($email  = FALSE, $password  = FALSE)
 	{
-		$domain   	= ($domain == FALSE) ? $this->input->post('domain') : $domain;
-		$username   = ($username == FALSE) ? $this->input->post('username') : $username;
+		$email   = ($email == FALSE) ? $this->input->post('email') : $email;
 		$password   = ($password == FALSE) ? $this->input->post('password') : $password;
 		$redirect   = (empty($_POST['redirect'])) ? 'dashboard' : $this->input->post('redirect');
-		$row        = $this->com_auth->auth($domain, $username, $password);
+		$row        = $this->com_auth->auth($email, $password);
 
-		if($row[0] == TRUE)
+		if($row == TRUE)
 		{
-			$redirect = ($row[1] == 0) ? "initial_settings" : $redirect;
 			echo json_encode(array('result' => 1, 'url' => base_url().$redirect));
 		}
 		else
 		{
-			echo json_encode(array('result' => 0, 'error' => display_error("<li>La combinación Dominio / Usuario / Contraseña es incorrecta.</li>", TRUE)));
+			echo json_encode(array('result' => 0, 'error' => display_error("<li>La combinación Email / Contraseña es incorrecta.</li>", TRUE)));
 		}
 	}
 
