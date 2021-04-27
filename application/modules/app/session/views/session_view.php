@@ -56,12 +56,11 @@
 					</button>
 				</form>
 				<a href="<?php echo base_url();?>session/recover">¿Olvido su contraseña?</a>
-				<p class="p-t-10">¿No posees una cuenta? <a href="<?php echo base_url('register');?>">Reg&iacute;strate</a></p>
 			</div>
 		</div>
 	</div>
 	<div class="footer">
-		<p>Bibliotech &copy; <?php echo date("Y");?> <a href="<?php echo base_url();?>">T&eacute;rminos de Uso</a> & <a href="<?php echo base_url();?>">Pol&iacute;ticas de Privacidad</a></p>
+		<p>Bibliotech &copy; <?php echo date("Y");?></p>
 	</div>
 </div>
 

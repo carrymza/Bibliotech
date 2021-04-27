@@ -35,7 +35,7 @@
 		</div>
 	</div>
 	<div class="footer">
-		<p>SchoolApp &copy; <?php echo date("Y");?> <a href="<?php echo base_url();?>">T&eacute;rminos de Uso</a> & <a href="<?php echo base_url();?>">Pol&iacute;ticas de Privacidad</a></p>
+		<p>Bibliotech &copy; <?php echo date("Y");?></p>
 	</div>
 </div>
 

@@ -12,7 +12,7 @@ class Session extends MY_Controller
 
 	public function index($redirect = FALSE)
 	{
-		$this->redirect_if_logged_in($this->session->userdata('app')['userdata']['is_logged_in']);
+		$this->redirect_if_logged_in();
 		$data                   = array();
 		$data['redirect']       = ($redirect == FALSE) ? "" : $redirect;
 		$this->load->view('session/session_view', $data);
@@ -161,9 +161,9 @@ class Session extends MY_Controller
 		redirect(base_url().'login');
 	}
 
-	private function redirect_if_logged_in($is_logged_in)
+	private function redirect_if_logged_in()
 	{
-		if(isset($is_logged_in) || ($is_logged_in === TRUE))
+		if(isset($this->session->userdata('app')['userdata']['is_logged_in']))
 		{
 			$redirect = "dashboard";
 			redirect(base_url().$redirect);

@@ -42,36 +42,3 @@ if( ! function_exists('display_warning'))
                 </div>';
 	}
 }
-
-if( ! function_exists('generate_code'))
-{
-	function generate_code($long)
-	{
-		$key 		= '';
-		$pattern 	= '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-		$max 		= strlen($pattern)-1;
-		for($i=0;$i < $long;$i++) $key .= $pattern{mt_rand(0,$max)};
-		return $key;
-	}
-}
-
-if( ! function_exists('display_lang_options'))
-{
-	function display_lang_options($lang)
-	{
-		$lang = ($lang == 'en') ? '<i class="flag-icon flag-icon-us m-r-5"></i> English' : '<i class="flag-icon flag-icon-do m-r-5"></i> Español';
-		return '<a href="javascript:void(0);" id="dropdown-active-item">'.$lang.'</a>
-				<ul class="show-notification">
-					<li>
-						<a href="javascript:void(0);">
-							<i class="flag-icon flag-icon-us m-r-5"></i> Ingles
-						</a>
-					</li>
-					<li>
-						<a href="javascript:void(0);">
-							<i class="flag-icon flag-icon-do m-r-5"></i> Español
-						</a>
-					</li>
-				</ul>';
-	}
-}
