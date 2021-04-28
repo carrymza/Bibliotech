@@ -14,16 +14,7 @@
 						</div>
 					</div>
 					<div class="col-md-4 text-right">
-						<div class="btn-group dropdown-split-primary">
-							<a class="btn btn-primary" href="<?php echo base_url('students/add');?>"><i class="ti-plus"></i>Nuevo</a>
-							<button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split waves-effect waves-light" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								<span class="sr-only"></span>
-							</button>
-							<div class="dropdown-menu">
-								<a class="dropdown-item waves-effect waves-light" href="<?php echo base_url('students/add');?>"><i class="ti-plus"></i>Nuevo</a>
-								<a class="dropdown-item waves-effect waves-light modal_trigger" data-target="#modals" data-toggle="modal" data-url="<?php echo base_url('students/import');?>" href="javascript:void(0);"><i class="ti-export"></i>Importar</a>
-							</div>
-						</div>
+						<a class="btn btn-primary" href="<?php echo base_url('students/add');?>"><i class="ti-plus"></i>Nuevo</a>
 					</div>
 				</div>
 				<div class="page-body">
@@ -38,7 +29,6 @@
 												<th></th>
 												<th></th>
 												<th>Nombre</th>
-												<th>Edad</th>
 												<th>Acción</th>
 											</tr>
 											</thead>
@@ -48,11 +38,6 @@
 										</table>
 									</div>
 								</div>
-							</div>
-
-							<div class="template-section">
-								<h4>Importar Estudiantes vía Excel</h4>
-								<a href="<?php echo base_url('assets/import_templates/estudiantes.xlsx');?>">Descargar pantilla de importación</a>
 							</div>
 						</div>
 					</div>

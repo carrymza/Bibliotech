@@ -11,7 +11,7 @@
  Target Server Version : 100138
  File Encoding         : 65001
 
- Date: 28/04/2021 10:11:45
+ Date: 28/04/2021 11:05:11
 */
 
 SET NAMES utf8mb4;
@@ -23,7 +23,6 @@ SET FOREIGN_KEY_CHECKS = 0;
 DROP TABLE IF EXISTS `ai_employees`;
 CREATE TABLE `ai_employees`  (
   `employeeId` int(11) NOT NULL AUTO_INCREMENT,
-  `schoolId` int(11) NULL DEFAULT 0,
   `first_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `last_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `doc_typeId` int(11) NULL DEFAULT 0,
@@ -34,34 +33,13 @@ CREATE TABLE `ai_employees`  (
   `cellphone` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `creation_date` date NULL DEFAULT NULL,
-  `positionId` int(11) NULL DEFAULT 0,
-  `position_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `hidden` tinyint(1) NULL DEFAULT 0,
-  `birthday` datetime(0) NULL DEFAULT NULL,
   PRIMARY KEY (`employeeId`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of ai_employees
 -- ----------------------------
-
--- ----------------------------
--- Table structure for ai_settings
--- ----------------------------
-DROP TABLE IF EXISTS `ai_settings`;
-CREATE TABLE `ai_settings`  (
-  `settingId` int(11) NOT NULL AUTO_INCREMENT,
-  `schoolId` int(11) NULL DEFAULT 0,
-  `currencyId` int(11) NULL DEFAULT NULL,
-  `language` varchar(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `hidden` tinyint(1) NULL DEFAULT 0,
-  PRIMARY KEY (`settingId`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of ai_settings
--- ----------------------------
-INSERT INTO `ai_settings` VALUES (1, 1, 1, 'es', 0);
 
 -- ----------------------------
 -- Table structure for ai_sex
@@ -81,40 +59,16 @@ INSERT INTO `ai_sex` VALUES (1, 'Masculino', 0);
 INSERT INTO `ai_sex` VALUES (2, 'Femenino', 0);
 
 -- ----------------------------
--- Table structure for ai_student_address
--- ----------------------------
-DROP TABLE IF EXISTS `ai_student_address`;
-CREATE TABLE `ai_student_address`  (
-  `addressId` int(11) NOT NULL AUTO_INCREMENT,
-  `studentId` int(11) NULL DEFAULT 0,
-  `address` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `city` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `province` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `creation_date` datetime(0) NULL DEFAULT NULL,
-  `main` tinyint(1) NULL DEFAULT 0,
-  `hidden` tinyint(1) NULL DEFAULT 0,
-  PRIMARY KEY (`addressId`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of ai_student_address
--- ----------------------------
-
--- ----------------------------
 -- Table structure for ai_students
 -- ----------------------------
 DROP TABLE IF EXISTS `ai_students`;
 CREATE TABLE `ai_students`  (
   `studentId` int(11) NOT NULL AUTO_INCREMENT,
-  `schoolId` int(11) NULL DEFAULT 0,
   `first_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `last_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `creation_date` datetime(0) NULL DEFAULT NULL,
-  `birthday` date NULL DEFAULT NULL,
-  `years_old` varchar(25) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '0',
   `sexId` int(11) NULL DEFAULT 0,
-  `blood_groupId` int(11) NULL DEFAULT 0,
   `hidden` tinyint(1) NULL DEFAULT 0,
   PRIMARY KEY (`studentId`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
@@ -122,12 +76,12 @@ CREATE TABLE `ai_students`  (
 -- ----------------------------
 -- Records of ai_students
 -- ----------------------------
-INSERT INTO `ai_students` VALUES (1, 1, NULL, NULL, '', '2020-06-14 10:35:56', '2020-06-14', '0', 0, 0, 0);
-INSERT INTO `ai_students` VALUES (2, 1, NULL, NULL, '', '2020-06-15 21:26:30', '2020-06-15', '0', 0, 0, 0);
-INSERT INTO `ai_students` VALUES (3, 1, NULL, NULL, '', '2020-06-20 13:01:43', '2020-06-20', '0', 0, 0, 0);
-INSERT INTO `ai_students` VALUES (4, 1, NULL, NULL, '', '2020-06-20 13:14:26', '2020-06-20', '0', 0, 0, 0);
-INSERT INTO `ai_students` VALUES (5, 1, NULL, NULL, '', '2020-06-20 13:52:46', '2020-06-20', '0', 0, 0, 0);
-INSERT INTO `ai_students` VALUES (6, 1, NULL, NULL, '', '2020-06-30 20:57:58', '2020-06-30', '0', 0, 0, 1);
+INSERT INTO `ai_students` VALUES (1, NULL, NULL, '', '2020-06-14 10:35:56', 0, 0);
+INSERT INTO `ai_students` VALUES (2, NULL, NULL, '', '2020-06-15 21:26:30', 0, 0);
+INSERT INTO `ai_students` VALUES (3, NULL, NULL, '', '2020-06-20 13:01:43', 0, 0);
+INSERT INTO `ai_students` VALUES (4, NULL, NULL, '', '2020-06-20 13:14:26', 0, 1);
+INSERT INTO `ai_students` VALUES (5, NULL, NULL, '', '2020-06-20 13:52:46', 0, 1);
+INSERT INTO `ai_students` VALUES (6, NULL, NULL, '', '2020-06-30 20:57:58', 0, 1);
 
 -- ----------------------------
 -- Table structure for ai_teachers
@@ -135,7 +89,6 @@ INSERT INTO `ai_students` VALUES (6, 1, NULL, NULL, '', '2020-06-30 20:57:58', '
 DROP TABLE IF EXISTS `ai_teachers`;
 CREATE TABLE `ai_teachers`  (
   `teacherId` int(11) NOT NULL AUTO_INCREMENT,
-  `schoolId` int(11) NULL DEFAULT 0,
   `first_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `last_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `statusId` int(11) NULL DEFAULT NULL,
@@ -146,8 +99,6 @@ CREATE TABLE `ai_teachers`  (
   `phone` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `cellphone` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `creation_date` datetime(0) NULL DEFAULT NULL,
-  `birthday` datetime(0) NULL DEFAULT NULL,
-  `specialtyId` int(11) NULL DEFAULT 0,
   `hidden` tinyint(1) NULL DEFAULT 0,
   PRIMARY KEY (`teacherId`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
@@ -155,27 +106,7 @@ CREATE TABLE `ai_teachers`  (
 -- ----------------------------
 -- Records of ai_teachers
 -- ----------------------------
-INSERT INTO `ai_teachers` VALUES (1, 1, NULL, NULL, 1, 0, NULL, '', NULL, NULL, NULL, '2020-07-01 20:05:51', NULL, 0, 1);
-
--- ----------------------------
--- Table structure for ai_teachers_address
--- ----------------------------
-DROP TABLE IF EXISTS `ai_teachers_address`;
-CREATE TABLE `ai_teachers_address`  (
-  `addressId` int(11) NOT NULL AUTO_INCREMENT,
-  `teacherId` int(11) NULL DEFAULT 0,
-  `address` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `city` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `province` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `creation_date` datetime(0) NULL DEFAULT NULL,
-  `main` tinyint(1) NULL DEFAULT 0,
-  `hidden` tinyint(1) NULL DEFAULT 0,
-  PRIMARY KEY (`addressId`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of ai_teachers_address
--- ----------------------------
+INSERT INTO `ai_teachers` VALUES (1, NULL, NULL, 1, 0, NULL, '', NULL, NULL, NULL, '2020-07-01 20:05:51', 1);
 
 -- ----------------------------
 -- Table structure for ai_type_documents
@@ -202,7 +133,6 @@ INSERT INTO `ai_type_documents` VALUES (3, 'Docente', NULL, 1);
 DROP TABLE IF EXISTS `ai_users`;
 CREATE TABLE `ai_users`  (
   `userId` int(11) NOT NULL AUTO_INCREMENT,
-  `schoolId` int(11) NULL DEFAULT 0,
   `typeId` tinyint(1) NULL DEFAULT 0,
   `username` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `password` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
@@ -217,7 +147,6 @@ CREATE TABLE `ai_users`  (
   `phone` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `cellphone` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `owner` tinyint(1) NOT NULL DEFAULT 0,
-  `is_employee` tinyint(1) NULL DEFAULT 0,
   `hidden` tinyint(1) NULL DEFAULT 0,
   PRIMARY KEY (`userId`) USING BTREE,
   INDEX `userId_index`(`userId`) USING BTREE
@@ -226,7 +155,7 @@ CREATE TABLE `ai_users`  (
 -- ----------------------------
 -- Records of ai_users
 -- ----------------------------
-INSERT INTO `ai_users` VALUES (1, 1, 1, 'edelacruz9713@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Jesus Enmanuel', 'De La Cruz', 'edelacruz9713@gmail.com', '', '2020-06-11 10:15:49', NULL, NULL, 1, '', '', 1, 0, 0);
+INSERT INTO `ai_users` VALUES (1, 1, 'edelacruz9713@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Jesus Enmanuel', 'De La Cruz', 'edelacruz9713@gmail.com', '', '2020-06-11 10:15:49', NULL, NULL, 1, '', '', 1, 0);
 
 -- ----------------------------
 -- Table structure for ai_users_status
@@ -262,9 +191,22 @@ CREATE TABLE `ai_users_type`  (
 -- ----------------------------
 -- Records of ai_users_type
 -- ----------------------------
-INSERT INTO `ai_users_type` VALUES (1, 'Administrador(a)', NULL, 0);
-INSERT INTO `ai_users_type` VALUES (2, 'Secretaria(o)', NULL, 0);
-INSERT INTO `ai_users_type` VALUES (3, 'Docente', NULL, 0);
+INSERT INTO `ai_users_type` VALUES (1, 'Administrador', NULL, 0);
+INSERT INTO `ai_users_type` VALUES (2, 'Usuario', NULL, 0);
+
+-- ----------------------------
+-- View structure for ai_students_view
+-- ----------------------------
+DROP VIEW IF EXISTS `ai_students_view`;
+CREATE ALGORITHM = UNDEFINED SQL SECURITY DEFINER VIEW `ai_students_view` AS SELECT
+	`a`.`studentId` AS `studentId`,
+	concat( `a`.`first_name`, ' ', `a`.`last_name` ) AS `full_name`,
+	a.image AS image,
+	`a`.`hidden` AS `hidden` 
+FROM
+	`ai_students` AS `a`
+WHERE
+	a.hidden = 0 ;
 
 -- ----------------------------
 -- View structure for ai_users_view

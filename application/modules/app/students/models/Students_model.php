@@ -12,7 +12,7 @@ class Students_model extends MY_Model
 
     public function get_all_students($schoolId)
 	{
-		$result = $this->db->query("SELECT * FROM $this->table_name WHERE schoolId = $schoolId AND hidden = 0")->result();
+		$result = $this->db->query("SELECT * FROM $this->table_name WHERE hidden = 0")->result();
 
 		$option[0] = "Seleccione una Opción";
 
