@@ -14,11 +14,7 @@
 						</div>
 					</div>
 					<div class="col-md-4 text-right">
-						<?php if($active_users < $this->user_qty):?>
-							<button type="button" class="btn btn-primary modal_trigger" data-target="#modals" data-toggle="modal" data-url="<?php echo base_url('users/add');?>"><i class="ti-plus"></i>Nuevo</button>
-						<?php else:?>
-							<button type="button" class="btn btn-primary show-alert"><i class="ti-plus"></i>Nuevo</button>
-						<?php endif;?>
+						<button type="button" class="btn btn-primary modal_trigger" data-target="#modals" data-toggle="modal" data-url="<?php echo base_url('users/add');?>"><i class="ti-plus"></i>Nuevo</button>
 					</div>
 				</div>
 				<div class="page-body">

@@ -42,31 +42,13 @@
 							<div class="card client-blocks success-border">
 								<a href="<?php echo base_url('employees');?>">
 									<div class="card-body">
-										<h5>Empleados</h5>
-										<ul>
-											<li>
-												<i class="ti-user text-success"></i>
-											</li>
-											<li class="text-right text-success">
-												<?php echo $header_data['employees'];?>
-											</li>
-										</ul>
-									</div>
-								</a>
-							</div>
-						</div>
-
-						<div class="col-md-6 col-xl-3">
-							<div class="card client-blocks success-border">
-								<a href="<?php echo base_url('employees');?>">
-									<div class="card-body">
 										<h5>Libros</h5>
 										<ul>
 											<li>
 												<i class="ti-user text-success"></i>
 											</li>
 											<li class="text-right text-success">
-												<?php echo $header_data['employees'];?>
+												<?php echo $header_data['students'];?>
 											</li>
 										</ul>
 									</div>
@@ -84,7 +66,7 @@
 												<i class="ti-user text-success"></i>
 											</li>
 											<li class="text-right text-success">
-												<?php echo $header_data['employees'];?>
+												<?php echo $header_data['students'];?>
 											</li>
 										</ul>
 									</div>

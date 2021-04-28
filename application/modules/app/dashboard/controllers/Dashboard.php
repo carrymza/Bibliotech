@@ -9,7 +9,6 @@ class Dashboard extends APP_Controller
 		$this->namespace   = 'app';
 		$this->moduleId		= 1;
 		$this->load->model('students/students_model');
-		$this->load->model('employees/employees_model');
 	}
 
 	public function index()
@@ -24,7 +23,6 @@ class Dashboard extends APP_Controller
 	{
 		return array(
 			'students'  => $this->students_model->count_by(array("hidden" => 0)),
-			'employees' => $this->employees_model->count_by(array("hidden" => 0)),
 		);
 	}
 }

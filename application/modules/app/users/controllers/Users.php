@@ -7,14 +7,11 @@ class Users extends APP_Controller
 		parent::__construct();
 		$this->title       	= 'Usuarios';
 		$this->namespace   	= 'app';
-		$this->moduleId		= 9;
 
 		$this->load->model('users/users_model');
 		$this->load->model('users/users_status_model');
 		$this->load->model('users/users_type_model');
-		$this->load->model('general_settings/type_documents_model');
-		$this->load->model('employees/employees_model');
-		$this->load->module('com_files/controller/com_files');
+		$this->load->model('students/type_documents_model');
 
 		$this->status 			= $this->users_status_model->get_assoc_list(array('statusId AS id', 'name'), array("hidden" => 0));
 		$this->types 			= $this->users_type_model->get_assoc_list(array('typeId AS id', 'name'), array("hidden" => 0));
@@ -24,7 +21,6 @@ class Users extends APP_Controller
 	public function index()
 	{
 		$data                   = array();
-		$data['active_users']	= $this->users_model->count_by(array('schoolId' => $this->schoolId, 'hidden' => 0));
 		$data['content']		= 'users/users_view';
 		$this->load->view('include/template', $data);
 	}
@@ -34,7 +30,7 @@ class Users extends APP_Controller
 		if($this->input->is_ajax_request())
 		{
 			$columns    	= "userId,image,full_name,username,type_name,status_name,statusId,class,owner";
-			$result     	= $this->users_model->datatable($columns, array("schoolId" => $this->schoolId), TRUE);
+			$result     	= $this->users_model->datatable($columns, array("hidden" => 0), TRUE);
 
 			echo json_encode(array('data' => $result));
 		}
@@ -87,7 +83,6 @@ class Users extends APP_Controller
 		else
 		{
 			$data = array(
-				'schoolId'		=> $this->schoolId,
 				'username'		=> $username,
 				'password'      => md5($this->input->post('password')),
 				'first_name'    => $this->input->post('first_name'),
@@ -103,41 +98,8 @@ class Users extends APP_Controller
 				'hidden'        => 0
 			);
 
-			if(!empty($_FILES))
-			{
-				$data_file = array(
-					'file_name'           => '',
-					'file_type'           => substr(strrchr($_FILES['image']['name'], "."), 1),
-					'allowed_types'       => 'jpg|png|jpeg',
-					'folder'              => 'users'
-				);
-
-				$result            = $this->com_files->upload($data_file);
-
-				$data['image'] = ($result["result"] != 0) ? $result['file'] : '';
-			}
-
 			if($this->users_model->save($data))
 			{
-				if($data['is_employee'] == 1)
-				{
-					$data_employee = array(
-						'schoolId'		=> $this->schoolId,
-						'first_name'    => $data['first_name'],
-						'last_name'     => $data['last_name'],
-						'doc_typeId'	=> $this->input->post('doc_typeId'),
-						'document'		=> $this->input->post('document'),
-						'email'         => $email,
-						'phone'			=> $data['phone'],
-						'cellphone'		=> $data['cellphone'],
-						'image'			=> $data['image'],
-						'statusId'		=> 1,
-						'creation_date' => timestamp_to_date(gmt_to_local(now(), 'UTC', FALSE), "Y-m-d H:i:s")
-					);
-
-					$this->employees_model->save($data_employee);
-				}
-
 				echo json_encode(array("result" => 1));
 			}
 		}
@@ -183,27 +145,6 @@ class Users extends APP_Controller
 			if($_POST['password'] != '')
 			{
 				$data['password'] = md5($this->input->post('password'));
-			}
-
-			if(!empty($_FILES))
-			{
-				$data_file = array(
-					'file_name'           => '',
-					'file_type'           => substr(strrchr($_FILES['image']['name'], "."), 1),
-					'allowed_types'       => 'jpg|png|jpeg',
-					'folder'              => 'users'
-				);
-
-				$result            = $this->com_files->upload($data_file);
-
-				if($result["result"] != 0)
-				{
-					$data['image']  = $result['file'];
-					if($row->image != null || $row->image != "")
-					{
-						$this->com_files->unlink_image($row->image);
-					}
-				}
 			}
 
 			if($this->users_model->save($data, $userId))
@@ -277,27 +218,6 @@ class Users extends APP_Controller
 				$data['password'] = md5($this->input->post('password'));
 			}
 
-			if(!empty($_FILES))
-			{
-				$data_file = array(
-					'file_name'           => '',
-					'file_type'           => substr(strrchr($_FILES['image']['name'], "."), 1),
-					'allowed_types'       => 'jpg|png|jpeg',
-					'folder'              => 'users'
-				);
-
-				$result            		  = $this->com_files->upload($data_file);
-
-				if($result["result"] != 0)
-				{
-					$data['image']  	  = $result['file'];
-					if($row->image != null || $row->image != "")
-					{
-						$this->com_files->unlink_image($row->image);
-					}
-				}
-			}
-
 			if($this->users_model->save($data, $userId))
 			{
 				$user_data['app']              				= $this->session->userdata('app');
@@ -321,7 +241,7 @@ class Users extends APP_Controller
 
 	private function user_email_check($email, $userId = FALSE)
 	{
-		$where = array('LOWER(REPLACE(email," ",""))=' => clear_space($email), 'schoolId' => $this->schoolId, 'hidden' => 0);
+		$where = array('LOWER(REPLACE(email," ",""))=' => clear_space($email), 'hidden' => 0);
 
 		if($userId != FALSE)
 		{
@@ -333,7 +253,7 @@ class Users extends APP_Controller
 
 	private function user_username_check($username, $userId = FALSE)
 	{
-		$where = array('LOWER(REPLACE(username," ",""))=' => $username, 'schoolId' => $this->schoolId, 'hidden' => 0);
+		$where = array('LOWER(REPLACE(username," ",""))=' => $username, 'hidden' => 0);
 
 		if($userId != FALSE)
 		{

@@ -8,12 +8,12 @@
 			<form role="form" id="profile-form" method="post" action="<?php echo base_url('users/update_profile/'.$row->userId);?>" class="form" enctype="multipart/form-data" onsubmit="return false;">
 				<div class="response"></div>
 				<div class="row">
-					<div class="col-md-8 solid-black">
+					<div class="col-md-12">
 						<div class="row form-group">
 							<div class="col-md-3 text-right">
 								<label for="username" class="label-style l-h-40">Usuario:</label>
 							</div>
-							<div class="col-md-8 alpha">
+							<div class="col-md-7 alpha">
 								<input type="text" class="form-control" data-field="username" value="<?php echo $row->username;?>" name="username" id="username" readonly>
 								<span class="valid-message"></span>
 							</div>
@@ -22,7 +22,7 @@
 							<div class="col-md-3 text-right">
 								<label for="password" class="label-style l-h-40">Contraseña:</label>
 							</div>
-							<div class="col-md-8 alpha">
+							<div class="col-md-7 alpha">
 								<input type="password" class="form-control" value="" name="password" id="password">
 								<span class="text-muted fz13px">Dejar en blanco si no desea cambiar la contraseña.</span>
 							</div>
@@ -35,7 +35,7 @@
 							<div class="col-md-3 text-right">
 								<label for="first_name" class="label-style l-h-40">Nombre(s):</label>
 							</div>
-							<div class="col-md-8 alpha">
+							<div class="col-md-7 alpha">
 								<input type="text" class="form-control" data-field="first_name" value="<?php echo $row->first_name;?>" name="first_name" id="first_name">
 								<span class="valid-message"></span>
 							</div>
@@ -44,7 +44,7 @@
 							<div class="col-md-3 text-right">
 								<label for="last_name" class="label-style l-h-40">Apellido(s):</label>
 							</div>
-							<div class="col-md-8 alpha">
+							<div class="col-md-7 alpha">
 								<input type="text" class="form-control" data-field="last_name" value="<?php echo $row->last_name;?>" name="last_name" id="last_name">
 								<span class="valid-message"></span>
 							</div>
@@ -53,7 +53,7 @@
 							<div class="col-md-3 text-right">
 								<label for="email" class="label-style l-h-40">Email:</label>
 							</div>
-							<div class="col-md-8 alpha">
+							<div class="col-md-7 alpha">
 								<input type="email" class="form-control" data-field="email" value="<?php echo $row->email;?>" name="email" id="email">
 								<span class="valid-message"></span>
 							</div>
@@ -62,7 +62,7 @@
 							<div class="col-md-3 text-right">
 								<label for="phone" class="label-style l-h-40">Tel&eacute;fono:</label>
 							</div>
-							<div class="col-md-8 alpha">
+							<div class="col-md-7 alpha">
 								<input type="text" class="form-control phone-mask" data-field="phone" value="<?php echo $row->phone;?>" data-mask="(999) 999-9999" name="phone" id="phone">
 								<span class="valid-message"></span>
 							</div>
@@ -71,16 +71,10 @@
 							<div class="col-md-3 text-right">
 								<label for="cellphone" class="label-style l-h-40">Celular:</label>
 							</div>
-							<div class="col-md-8 alpha">
+							<div class="col-md-7 alpha">
 								<input type="text" class="form-control phone-mask" data-field="cellphone" value="<?php echo $row->cellphone;?>" data-mask="(999) 999-9999" name="cellphone" id="cellphone">
 								<span class="valid-message"></span>
 							</div>
-						</div>
-					</div>
-					<div class="col-md-4">
-						<div class="user-profile">
-							<?php $image = ($row->image == '' || $row->image == null)? base_url('assets/template/app/default/assets/images/avatar-4.png') : $row->image;?>
-							<input type="file" name="image" class="dropify" data-height="150" data-default-file="<?php echo $image;?>" />
 						</div>
 					</div>
 				</div>

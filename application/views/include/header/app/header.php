@@ -64,18 +64,6 @@
 							</li>
 						</ul>
 						<ul class="nav-right">
-							<li class="header-notification">
-								<a href="javascript:void(0);" title="Configuración">
-									<i class="ti-settings"></i>
-								</a>
-								<ul class="show-notification profile-notification">
-									<li>
-										<a href="<?php echo base_url('general_settings');?>">
-											<i class="ti-settings"></i> Configuraci&oacute;n General
-										</a>
-									</li>
-								</ul>
-							</li>
 							<li class="user-profile header-notification">
 								<a href="javascript:void(0);">
 									<img src="<?php echo $this->image;?>" alt="User-Profile-Image">

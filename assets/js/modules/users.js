@@ -1,24 +1,6 @@
 $(document).ready(function() {
 	loadDatatable();
 
-	$(document).on('click', '.show-alert', function () {
-		swal({
-			title               : 'Atención',
-			text                : 'A excedido el límite de usuarios de su plan, debe ir a subscripción para agregar mas usuarios.',
-			type                : "warning",
-			animation           : false,
-			showCancelButton    : true,
-			confirmButtonColor  : "#DD6B55",
-			cancelButtonText	: 'Cancelar',
-			confirmButtonText   : 'Ir',
-			reverseButtons		: true
-		}).then((result) => {
-			if(result.value) {
-				window.location.href = URL.baseUrl()+'subscription';
-			}
-		});
-	});
-
 	$(document).on('keyup', '#first_name, #last_name', function() {
 		$('#users .users-title').html('/ '+$('#first_name').val()+' '+$('#last_name').val());
 	});
@@ -29,14 +11,6 @@ $(document).ready(function() {
 			$(".document").inputmask("mask",{ mask: "999-9999999-9"});
 		}else{
 			$('#document').inputmask('remove');
-		}
-	});
-
-	$(document).on('change', '#is_employee', function () {
-		if($(this).prop('checked')){
-			$('.employee-data').removeClass('hidden');
-		}else{
-			$('.employee-data').addClass('hidden');
 		}
 	});
 });
@@ -73,7 +47,6 @@ let imagesName = function (data) {
 		image 	= (data.image == "" || data.image == null) ? URL.baseUrl() +'assets/template/app/default/assets/images/avatar-4.png' : data.image;
 		html  	+= '<img src="'+ image + '" class="image-dt"> ' +
 					'<span class="p-l-5">' + data.full_name +'</span>';
-		html 	+= (data.owner == 1) ? '<span class="owner p-l-15" title="Propietario de la cuenta"><i class="icon-user-following"></i></span>' : '';
 
 		return html;
 };
