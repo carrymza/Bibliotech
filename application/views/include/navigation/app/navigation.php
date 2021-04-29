@@ -28,6 +28,14 @@
 					<span class="pcoded-mcaret"></span>
 				</a>
 			</li>
+			<?php $teachers_active = ($this->router->fetch_class() == "teachers") ? "active" : "";?>
+			<li class="<?php echo $teachers_active;?>">
+				<a href="<?php echo base_url('teachers');?>">
+					<span class="pcoded-micon"><i class="ti-home"></i></span>
+					<span class="pcoded-mtext">Prestamos</span>
+					<span class="pcoded-mcaret"></span>
+				</a>
+			</li>
 		</ul>
 
 		<div class="pcoded-navigatio-lavel" data-i18n="nav.category.navigation" menu-title-theme="theme5">Administrativo</div>

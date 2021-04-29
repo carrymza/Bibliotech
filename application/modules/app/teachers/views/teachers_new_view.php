@@ -1,11 +1,11 @@
-<div class="modal-dialog modal-lg" id="students" role="document">
+<div class="modal-dialog modal-lg" id="teachers" role="document">
 	<div class="modal-content">
 		<div class="modal-header">
-			<h5 class="modal-title" id="myModalLabel"><i class="icon-people p-r-7"></i>Editar Estudiante  <span class="students-title">/ <?php echo $row->first_name.' '.$row->last_name;?></span></h5>
+			<h5 class="modal-title" id="myModalLabel"><i class="icon-people p-r-7"></i>Agregar Docente <span class="teachers-title"></span></h5>
 			<a href="javascript:void(0);" class="close" data-dismiss="modal" aria-hidden="true"><i class="icon-close"></i></a>
 		</div>
 		<div class="modal-body">
-			<form role="form" id="students-form" method="post" action="<?php echo base_url('students/update/'.$row->studentId);?>" class="form" enctype="multipart/form-data" onsubmit="return false;">
+			<form role="form" id="teachers-form" method="post" action="<?php echo base_url();?>teachers/insert" class="form" enctype="multipart/form-data" onsubmit="return false;">
 				<div class="response"></div>
 				<div class="row">
 					<div class="col-md-12">
@@ -20,7 +20,7 @@
 										<label for="first_name" class="label-style l-h-40">Nombre(s):</label>
 									</div>
 									<div class="col-md-7 alpha">
-										<input type="text" class="form-control" data-field="first_name" value="<?php echo $row->first_name;?>" name="first_name" id="first_name">
+										<input type="text" class="form-control" data-field="first_name" value="" name="first_name" id="first_name">
 										<span class="valid-message"></span>
 									</div>
 								</div>
@@ -29,7 +29,7 @@
 										<label for="last_name" class="label-style l-h-40">Apellido(s):</label>
 									</div>
 									<div class="col-md-7 alpha">
-										<input type="text" class="form-control" data-field="last_name" value="<?php echo $row->last_name;?>" name="last_name" id="last_name">
+										<input type="text" class="form-control" data-field="last_name" value="" name="last_name" id="last_name">
 										<span class="valid-message"></span>
 									</div>
 								</div>
@@ -38,9 +38,8 @@
 										<label for="statusId" class="label-style">Estado:</label>
 									</div>
 									<div class="col-md-8 alpha">
-										<?php $checked = ($row->statusId == 1) ? "checked" : "";?>
-										<input type="checkbox" name="statusId" id="statusId" value="1" class="checkbox-modal-1" <?php echo $checked;?>/>
-										<label for="statusId">¿Estudiante esta activo?</label>
+										<input type="checkbox" name="statusId" id="statusId" value="1" class="checkbox-modal-1"/>
+										<label for="statusId">¿Docente esta activo?</label>
 									</div>
 								</div>
 							</div>
@@ -54,7 +53,7 @@
 										<label for="email" class="label-style l-h-40">Email:</label>
 									</div>
 									<div class="col-md-7 alpha">
-										<input type="email" class="form-control" data-field="email" value="<?php echo $row->email;?>" name="email" id="email">
+										<input type="email" class="form-control" data-field="email" value="" name="email" id="email">
 										<span class="valid-message"></span>
 									</div>
 								</div>
@@ -63,7 +62,7 @@
 										<label for="phone" class="label-style l-h-40">Tel&eacute;fono:</label>
 									</div>
 									<div class="col-md-7 alpha">
-										<input type="text" class="form-control phone-mask" data-field="phone" value="<?php echo $row->phone;?>" data-mask="(999) 999-9999" name="phone" id="phone">
+										<input type="text" class="form-control phone-mask" data-field="phone" data-mask="(999) 999-9999" name="phone" id="phone">
 										<span class="valid-message"></span>
 									</div>
 								</div>
@@ -72,7 +71,7 @@
 										<label for="cellphone" class="label-style l-h-40">Celular:</label>
 									</div>
 									<div class="col-md-7 alpha">
-										<input type="text" class="form-control phone-mask" data-field="cellphone" value="<?php echo $row->cellphone;?>" data-mask="(999) 999-9999" name="cellphone" id="cellphone">
+										<input type="text" class="form-control phone-mask" data-field="cellphone" data-mask="(999) 999-9999" name="cellphone" id="cellphone">
 										<span class="valid-message"></span>
 									</div>
 								</div>
@@ -83,13 +82,13 @@
 			</form>
 		</div>
 		<div class="modal-footer">
-			<button type="button" class="btn btn-primary ladda-button" data-style="expand-left" id="students-button"><span class="ladda-label">Guardar</span><span class="ladda-spinner"></span></button>
+			<button type="button" class="btn btn-primary ladda-button" data-style="expand-left" id="teachers-button"><span class="ladda-label">Guardar</span><span class="ladda-spinner"></span></button>
 		</div>
 	</div>
 </div>
 <script>
 	$(document).ready(function () {
-		var studentsForm = $('#students-form').formValid({
+		let teachersForm = $('#teachers').formValid({
 			fields: {
 				"first_name": {
 					"required": true,
@@ -125,16 +124,16 @@
 			}
 		});
 
-		studentsForm.keypress(300);
+		teachersForm.keypress(300);
 
-		$(document).on("click", '#students-button', function(e) {
-			studentsForm.test();
+		$(document).on("click", '#teachers-button', function(e) {
+			teachersForm.test();
 			e.preventDefault();
 
-			if (studentsForm.errors() > 0) {
+			if (teachersForm.errors() > 0){
 				Ladda.stopAll();
-			} else {
-				var data = {type: 'post', form: '#students-form', modal: '#modals', doAfter: 'datatable', selector: '#students', messageError: '.response', showAlert: true, titleResponse: "Exito!", textResponse: "Datos del estudiante actualizados correctamente."};
+			}else {
+				let data = {type: 'post', form: '#teachers-form', modal: '#modals', doAfter: 'datatable', selector: '#teachers', btn: $(this), messageError: '.response', showAlert: true, titleResponse: "Exito!", textResponse: "Docente registrado correctamente."};
 				DOM.submitData(data);
 			}
 		});

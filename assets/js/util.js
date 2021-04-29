@@ -29,7 +29,7 @@ let UTIL = {
 	},
 	imagesName: function (data) {
 		let html 	= '',
-			image 	= (data.image == "" || data.image == null) ? URL.baseUrl() +'assets/template/app/default/assets/images/avatar-4.png' : data.image;
+			image 	= URL.baseUrl() +'assets/template/app/default/assets/images/avatar-4.png';
 		html  	+= '<img src="'+ image + '" class="image-dt"> ' +
 			'<span class="p-l-5">' + data.full_name +'</span>';
 

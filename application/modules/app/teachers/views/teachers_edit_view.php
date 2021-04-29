@@ -1,11 +1,11 @@
-<div class="modal-dialog modal-lg" id="students" role="document">
+<div class="modal-dialog modal-lg" id="teachers" role="document">
 	<div class="modal-content">
 		<div class="modal-header">
-			<h5 class="modal-title" id="myModalLabel"><i class="icon-people p-r-7"></i>Editar Estudiante  <span class="students-title">/ <?php echo $row->first_name.' '.$row->last_name;?></span></h5>
+			<h5 class="modal-title" id="myModalLabel"><i class="icon-people p-r-7"></i>Editar Docente  <span class="teachers-title">/ <?php echo $row->first_name.' '.$row->last_name;?></span></h5>
 			<a href="javascript:void(0);" class="close" data-dismiss="modal" aria-hidden="true"><i class="icon-close"></i></a>
 		</div>
 		<div class="modal-body">
-			<form role="form" id="students-form" method="post" action="<?php echo base_url('students/update/'.$row->studentId);?>" class="form" enctype="multipart/form-data" onsubmit="return false;">
+			<form role="form" id="teachers-form" method="post" action="<?php echo base_url('teachers/update/'.$row->teacherId);?>" class="form" enctype="multipart/form-data" onsubmit="return false;">
 				<div class="response"></div>
 				<div class="row">
 					<div class="col-md-12">
@@ -83,13 +83,13 @@
 			</form>
 		</div>
 		<div class="modal-footer">
-			<button type="button" class="btn btn-primary ladda-button" data-style="expand-left" id="students-button"><span class="ladda-label">Guardar</span><span class="ladda-spinner"></span></button>
+			<button type="button" class="btn btn-primary ladda-button" data-style="expand-left" id="teachers-button"><span class="ladda-label">Guardar</span><span class="ladda-spinner"></span></button>
 		</div>
 	</div>
 </div>
 <script>
 	$(document).ready(function () {
-		var studentsForm = $('#students-form').formValid({
+		var teachersForm = $('#teachers-form').formValid({
 			fields: {
 				"first_name": {
 					"required": true,
@@ -125,16 +125,16 @@
 			}
 		});
 
-		studentsForm.keypress(300);
+		teachersForm.keypress(300);
 
-		$(document).on("click", '#students-button', function(e) {
-			studentsForm.test();
+		$(document).on("click", '#teachers-button', function(e) {
+			teachersForm.test();
 			e.preventDefault();
 
-			if (studentsForm.errors() > 0) {
+			if (teachersForm.errors() > 0) {
 				Ladda.stopAll();
 			} else {
-				var data = {type: 'post', form: '#students-form', modal: '#modals', doAfter: 'datatable', selector: '#students', messageError: '.response', showAlert: true, titleResponse: "Exito!", textResponse: "Datos del estudiante actualizados correctamente."};
+				var data = {type: 'post', form: '#teachers-form', modal: '#modals', doAfter: 'datatable', selector: '#teachers', messageError: '.response', showAlert: true, titleResponse: "Exito!", textResponse: "Datos del docente actualizados correctamente."};
 				DOM.submitData(data);
 			}
 		});

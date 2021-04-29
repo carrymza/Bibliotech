@@ -29,7 +29,7 @@ class Users extends APP_Controller
 	{
 		if($this->input->is_ajax_request())
 		{
-			$columns    	= "userId,image,full_name,username,type_name,status_name,statusId,class,owner";
+			$columns    	= "userId,full_name,username,type_name,status_name,statusId,class";
 			$result     	= $this->users_model->datatable($columns, array("hidden" => 0), TRUE);
 
 			echo json_encode(array('data' => $result));

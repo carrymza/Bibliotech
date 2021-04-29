@@ -35,20 +35,12 @@ if( ! function_exists('display_css_files'))
                 break;
 
 			case "session":
-			case "pr_session":
-			case "ad_session":
-			case "register":
 				$files .= '<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.css" rel="stylesheet">';
 				$files .= '<link rel="stylesheet" type="text/css" href="'.base_url().'assets/template/session/css/style.css">';
 				$files .= '<link rel="stylesheet" type="text/css" href="'.base_url().'assets/template/session/vendor/formValid/src/jquery.formValid.css">';
 				$files .= '<link rel="stylesheet" type="text/css" href="'.base_url().'assets/template/app/bower_components/sweetalert/sweetalert.css">';
 				$files .= '<link rel="stylesheet" type="text/css" href="'.base_url().'assets/template/app/bower_components/ladda/ladda-themeless.min.css">';
 			break;
-
-			case "calendar":
-				$files .= '<link rel="stylesheet" type="text/css" href="'.base_url().'assets/template/app/bower_components/fullcalendar/dist/fullcalendar.css">';
-				$files .= '<link rel="stylesheet" type="text/css" href="'.base_url().'assets/template/app/bower_components/fullcalendar/dist/fullcalendar.print.css" media="print">';
-				break;
         }
 
         return $files;
@@ -117,69 +109,8 @@ if( ! function_exists('display_js_files'))
 				$files .= '<script src="'.base_url().'assets/js/modules/session.js"></script>';
 				break;
 
-			case "pr_session":
-				$files .= '<script src="'.base_url().'assets/template/app/bower_components/jquery/dist/jquery.min.js"></script>';
-				$files .= '<script src="'.base_url().'assets/template/session/vendor/formValid/src/jquery.formValid.js"></script>';
-				$files .= '<script src="'.base_url().'assets/template/app/bower_components/ladda/spin.min.js"></script>';
-				$files .= '<script src="'.base_url().'assets/template/app/bower_components/ladda/ladda.min.js"></script>';
-				$files .= '<script src="'.base_url().'assets/template/app/bower_components/sweetalert/sweetalert.js"></script>';
-				$files .= '<script src="'.base_url().'assets/js/dom.js"></script>';
-				$files .= '<script src="'.base_url().'assets/js/modules/pr_session.js"></script>';
-				break;
-
-			case "ad_session":
-				$files .= '<script src="'.base_url().'assets/template/app/bower_components/jquery/dist/jquery.min.js"></script>';
-				$files .= '<script src="'.base_url().'assets/template/session/vendor/formValid/src/jquery.formValid.js"></script>';
-				$files .= '<script src="'.base_url().'assets/template/app/bower_components/ladda/spin.min.js"></script>';
-				$files .= '<script src="'.base_url().'assets/template/app/bower_components/ladda/ladda.min.js"></script>';
-				$files .= '<script src="'.base_url().'assets/template/app/bower_components/sweetalert/sweetalert.js"></script>';
-				$files .= '<script src="'.base_url().'assets/js/dom.js"></script>';
-				$files .= '<script src="'.base_url().'assets/js/modules/ad_session.js"></script>';
-				break;
-
-			case "register":
-				$files .= '<script src="'.base_url().'assets/template/app/bower_components/jquery/dist/jquery.min.js"></script>';
-				$files .= '<script src="'.base_url().'assets/template/session/vendor/formValid/src/jquery.formValid.js"></script>';
-				$files .= '<script src="'.base_url().'assets/template/app/bower_components/ladda/spin.min.js"></script>';
-				$files .= '<script src="'.base_url().'assets/template/app/bower_components/ladda/ladda.min.js"></script>';
-				$files .= '<script src="'.base_url().'assets/template/app/bower_components/sweetalert/sweetalert.js"></script>';
-				$files .= '<script src="'.base_url().'assets/js/dom.js"></script>';
-				$files .= '<script src="'.base_url().'assets/js/modules/register.js"></script>';
-				break;
-
-			case "calendar":
-				$files .= '<script type="text/javascript" src="'.base_url().'assets/template/app/bower_components/moment/min/moment.min.js"></script>';
-				$files .= '<script type="text/javascript" src="'.base_url().'assets/template/app/bower_components/fullcalendar/dist/fullcalendar.min.js"></script>';
-				$files .= '<script type="text/javascript" src="'.base_url().'assets/template/app/bower_components/fullcalendar/dist/locales-all.js"></script>';
-				$files .= '<script src="'.base_url().'assets/js/modules/calendar.js"></script>';
-				break;
-
-			case "employees":
-				$files .= '<script src="'.base_url().'assets/js/modules/employees.js"></script>';
-				break;
-
-			case "expenses":
-				$files .= '<script src="'.base_url().'assets/js/modules/expenses.js"></script>';
-				break;
-
-			case "invoices":
-				$files .= '<script src="'.base_url().'assets/js/modules/invoices.js"></script>';
-				break;
-
-			case "payments":
-				$files .= '<script src="'.base_url().'assets/js/modules/payments.js"></script>';
-				break;
-
-			case "receipt_income":
-				$files .= '<script src="'.base_url().'assets/js/modules/receipt_income.js"></script>';
-				break;
-
 			case "reports":
 				$files .= '<script src="'.base_url().'assets/js/modules/reports.js"></script>';
-				break;
-
-			case "school":
-				$files .= '<script src="'.base_url().'assets/js/modules/school.js"></script>';
 				break;
 
 			case "students":
@@ -190,24 +121,11 @@ if( ! function_exists('display_js_files'))
 				$files .= '<script src="'.base_url().'assets/js/modules/teachers.js"></script>';
 				break;
 
-			case "inventory":
-				$files .= '<script src="'.base_url().'assets/js/modules/inventory.js"></script>';
-				break;
-
 			case "users":
 				$files .= '<script src="'.base_url().'assets/js/modules/users.js"></script>';
-				break;
-
-			case "parents":
-				$files .= '<script src="'.base_url().'assets/js/modules/parents.js"></script>';
-				break;
-
-			case "general_settings":
-				$files .= '<script src="'.base_url().'assets/js/modules/general_settings.js"></script>';
 				break;
         }
 
         return $files;
     }
 }
-

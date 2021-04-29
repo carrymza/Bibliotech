@@ -22950,7 +22950,7 @@ body[themebg-pattern=pattern1] {
 }
 
 body[themebg-pattern=pattern2] {
-	background-image: url(../images/pattern2.png)
+	/*background-image: url(../images/pattern2.png)*/
 }
 
 body[themebg-pattern=pattern3] {
@@ -24648,7 +24648,7 @@ body[themebg-pattern=pattern9] {
 }
 
 .theme-color a[themebg-pattern=pattern2] {
-	background-image: url(../images/pattern2.png)
+	/*background-image: url(../images/pattern2.png)*/
 }
 
 .theme-color a[themebg-pattern=pattern3] {

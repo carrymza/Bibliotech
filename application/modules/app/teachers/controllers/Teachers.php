@@ -1,24 +1,20 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Students extends APP_Controller
+class Teachers extends APP_Controller
 {
 	public function __construct()
 	{
 		parent::__construct();
-		$this->title       	= 'Estudiantes';
+		$this->title       	= 'Docentes';
 		$this->namespace   	= 'app';
 
-		$this->load->model('students/students_model');
-		$this->load->model('students/sex_model');
-		$this->load->model('students/type_documents_model');
-
-		$this->document_type 	= $this->type_documents_model->get_assoc_list(array('typeId AS id', 'name'), array("hidden" => 0));
+		$this->load->model('teachers/teachers_model');
 	}
 
 	public function index()
 	{
 		$data                   = array();
-		$data['content']		= 'students/students_view';
+		$data['content']		= 'teachers/teachers_view';
 		$this->load->view('include/template', $data);
 	}
 
@@ -26,8 +22,8 @@ class Students extends APP_Controller
 	{
 		if($this->input->is_ajax_request())
 		{
-			$columns    		= "studentId,full_name,email,statusId";
-			$result     		= $this->students_model->datatable($columns, array("hidden" => 0), TRUE);
+			$columns    		= "teacherId,full_name,email,statusId";
+			$result     		= $this->teachers_model->datatable($columns, array("hidden" => 0), TRUE);
 			echo json_encode(array('data' => $result));
 		}
 	}
@@ -35,13 +31,13 @@ class Students extends APP_Controller
 	public function add()
 	{
 		$data = array();
-		echo json_encode(array('result' => 1, 'view' => $this->load->view('students/students_new_view', $data, TRUE)));
+		echo json_encode(array('result' => 1, 'view' => $this->load->view('teachers/teachers_new_view', $data, TRUE)));
 	}
 
-	public function edit($studentId)
+	public function edit($teacherId)
 	{
-		$data['row'] = $this->students_model->get($studentId);
-		echo json_encode(array('result' => 1, 'view' => $this->load->view('students/students_edit_view', $data, TRUE)));
+		$data['row'] = $this->teachers_model->get($teacherId);
+		echo json_encode(array('result' => 1, 'view' => $this->load->view('teachers/teachers_edit_view', $data, TRUE)));
 	}
 
 	public function insert()
@@ -71,14 +67,14 @@ class Students extends APP_Controller
 				'cellphone'      	=> $this->input->post('cellphone')
 			);
 
-			if($this->students_model->save($data))
+			if($this->teachers_model->save($data))
 			{
 				echo json_encode(array("result" => 1));
 			}
 		}
 	}
 
-	public function update($studentId)
+	public function update($teacherId)
 	{
 		$error 		= '';
 		$valid      = TRUE;
@@ -105,16 +101,16 @@ class Students extends APP_Controller
 				'cellphone'      	=> $this->input->post('cellphone')
 			);
 
-			if($this->students_model->save($data, $studentId))
+			if($this->teachers_model->save($data, $teacherId))
 			{
 				echo json_encode(array("result" => 1));
 			}
 		}
 	}
 
-	public function delete($studentId)
+	public function delete($teacherId)
 	{
-		if($this->students_model->save(array('hidden' => 1), $studentId))
+		if($this->teachers_model->save(array('hidden' => 1), $teacherId))
 		{
 			echo json_encode(array('result' => 1));
 		}

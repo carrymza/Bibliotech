@@ -18,7 +18,6 @@ class APP_Controller extends MY_Controller
         $this->email				= (isset($this->session->userdata('app')['userdata']['email'])) ? $this->session->userdata('app')['userdata']['email'] : '';
         $this->image				= base_url('assets/template/app/default/assets/images/avatar-1.png');
         $this->typeId				= (isset($this->session->userdata('app')['userdata']['typeId'])) ? $this->session->userdata('app')['userdata']['typeId'] : 0;
-        $this->owner				= (isset($this->session->userdata('app')['userdata']['owner'])) ? $this->session->userdata('app')['userdata']['owner'] : 0;
         $this->menu_type			= (isset($this->session->userdata('app')['userdata']['menu_type'])) ? $this->session->userdata('app')['userdata']['menu_type'] : "";
 
 		$this->securities->is_logged_in($this->is_logged_in);

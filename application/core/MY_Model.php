@@ -17,7 +17,7 @@ class MY_Model extends CI_Model
     public function __construct()
     {
         parent::__construct();
-//		$this->userId		= (isset($this->session->userdata('app')['userdata']['userId'])) ? $this->session->userdata('app')['userdata']['userId'] : 0;
+		$this->userId		= (isset($this->session->userdata('app')['userdata']['userId'])) ? $this->session->userdata('app')['userdata']['userId'] : 0;
     }
 
     /**

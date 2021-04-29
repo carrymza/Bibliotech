@@ -1349,8 +1349,8 @@ li.edge > ul {
    ##################################################################################*/
 body[themebg-pattern="pattern1"] {
   background-image: url("../images/pattern1.png"); }
-body[themebg-pattern="pattern2"] {
-  background-image: url("../images/pattern2.png"); }
+/*body[themebg-pattern="pattern2"] {*/
+/*  background-image: url("../images/pattern2.png"); }*/
 body[themebg-pattern="pattern3"] {
   background-image: url("../images/pattern3.png"); }
 body[themebg-pattern="pattern4"] {

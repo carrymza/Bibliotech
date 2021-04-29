@@ -14,7 +14,7 @@
 						</div>
 					</div>
 					<div class="col-md-4 text-right">
-						<a class="btn btn-primary" href="<?php echo base_url('students/add');?>"><i class="ti-plus"></i>Nuevo</a>
+						<button type="button" class="btn btn-primary modal_trigger" data-target="#modals" data-toggle="modal" data-url="<?php echo base_url('students/add');?>"><i class="ti-plus"></i>Nuevo</button>
 					</div>
 				</div>
 				<div class="page-body">
@@ -27,8 +27,9 @@
 											<thead>
 											<tr>
 												<th></th>
-												<th></th>
 												<th>Nombre</th>
+												<th>Email</th>
+												<th>Estado</th>
 												<th>Acción</th>
 											</tr>
 											</thead>

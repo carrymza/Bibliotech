@@ -4,7 +4,7 @@
 			<div class="page-wrapper">
 				<div class="page-header row">
 					<div class="col-md-12 page-header-title">
-						<h4>Project Dashboard</h4>
+						<h4>Dashboard</h4>
 						<div class="page-header-breadcrumb">
 							<ul class="breadcrumb">
 								<li class="breadcrumb-item">
