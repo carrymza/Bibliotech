@@ -13,7 +13,7 @@
 						</div>
 					</div>
 					<div class="col-md-4 text-right">
-						<button type="button" class="btn btn-primary modal_trigger" data-target="#modals" data-toggle="modal" data-url="<?php echo base_url('editorials/add');?>"><i class="ti-plus"></i>Nuevo</button>
+						<button type="button" class="btn btn-primary modal_trigger" data-target="#modals" data-toggle="modal" data-url="<?php echo base_url('editorial/add');?>"><i class="ti-plus"></i>Nuevo</button>
 					</div>
 				</div>
 				<div class="page-body">
@@ -22,13 +22,11 @@
 							<div class="card">
 								<div class="card-body">
 									<div class="dt-responsive table-responsive">
-										<table id="editorials" class="table table-bordered nowrap">
+										<table id="editorial" class="table table-bordered nowrap">
 											<thead>
 											<tr>
 												<th></th>
 												<th>Nombre</th>
-												<th>Email</th>
-												<th>Estado</th>
 												<th>Acción</th>
 											</tr>
 											</thead>

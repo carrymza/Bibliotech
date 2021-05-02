@@ -8,15 +8,13 @@ let loadDatatable = function () {
 			url : URL.baseUrl()+'books/datatable'
 		},
 		"columns" : [
-			{ "data" : "bookId", 	"sClass": "dt-bookId",   		"width": "0%",  	"defaultContent": "<span class='text-muted'>N/A</span>"},
-			{ "data" : "full_name", 	"sClass": "dt-full_name",         	"width": "40%", 	"defaultContent": "<span class='text-muted'>N/A</span>"},
-			{ "data" : "email",     	"sClass": "dt-email",           	"width": "35%", 	"defaultContent": "<span class='text-muted'>N/A</span>"},
-			{ "data" : "statusId",  	"sClass": "dt-statusId",          	"width": "15%", 	"defaultContent": "<span class='text-muted'>N/A</span>"},
+			{ "data" : "bookId", 		"sClass": "dt-bookId",   			"width": "0%",  	"defaultContent": "<span class='text-muted'>N/A</span>"},
+			{ "data" : "title", 		"sClass": "dt-title",         		"width": "40%", 	"defaultContent": "<span class='text-muted'>N/A</span>"},
+			{ "data" : "author",     	"sClass": "dt-author",           	"width": "35%", 	"defaultContent": "<span class='text-muted'>N/A</span>"},
+			{ "data" : "edition",  		"sClass": "dt-edition",          	"width": "15%", 	"defaultContent": "<span class='text-muted'>N/A</span>"},
 			{ "data" : "action",    	"sClass": "dt-action text-center",	"width": "10%", 	"defaultContent": "<span class='text-muted'>N/A</span>"},
 		],
 		"createdRow": function(row, data){
-			$('.dt-full_name', row).html(UTIL.imagesName(data));
-			$('.dt-statusId', row).html(status(data));
 			$('.dt-action', row).html(options(data));
 		}
 	});

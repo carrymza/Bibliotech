@@ -9,6 +9,8 @@ class Books extends APP_Controller
 		$this->namespace   	= 'app';
 
 		$this->load->model('books/books_model');
+		$this->load->model('editorial/editorial_model');
+		$this->editorials = $this->editorial_model->get_all_editorial();
 	}
 
 	public function index()
@@ -22,7 +24,7 @@ class Books extends APP_Controller
 	{
 		if($this->input->is_ajax_request())
 		{
-			$columns    		= "bookId,full_name,email,statusId";
+			$columns    		= "bookId,title,author,edition";
 			$result     		= $this->books_model->datatable($columns, array("hidden" => 0), TRUE);
 			echo json_encode(array('data' => $result));
 		}
@@ -45,9 +47,8 @@ class Books extends APP_Controller
 		$error 		= '';
 		$valid      = TRUE;
 
-		$this->form_validation->set_rules('first_name', '<strong>Nombre</strong>', 'trim|required');
-		$this->form_validation->set_rules('last_name', '<strong>Apellido</strong>', 'trim|required');
-		$this->form_validation->set_rules('email', '<strong>Email</strong>', 'trim|required');
+		$this->form_validation->set_rules('title', '<strong>Titulo</strong>', 'trim|required');
+		$this->form_validation->set_rules('author', '<strong>Autor</strong>', 'trim|required');
 
 		$valid           = ($valid != FALSE) ? $this->form_validation->run($this) : $valid;
 		$error          .= validation_errors();
@@ -59,12 +60,11 @@ class Books extends APP_Controller
 		else
 		{
 			$data = array(
-				'first_name'    	=> $this->input->post('first_name'),
-				'last_name'     	=> $this->input->post('last_name'),
-				'statusId'      	=> (isset($_POST['statusId'])) ? $_POST['statusId'] : 0,
-				'email'      		=> $this->input->post('email'),
-				'phone'      		=> $this->input->post('phone'),
-				'cellphone'      	=> $this->input->post('cellphone')
+				'title'    			=> $this->input->post('title'),
+				'author'     		=> $this->input->post('author'),
+				'edition'     		=> $this->input->post('edition'),
+				'publication_date' 	=> $this->input->post('publication_date'),
+				'editorialId' 		=> $this->input->post('editorialId'),
 			);
 
 			if($this->books_model->save($data))
@@ -79,9 +79,8 @@ class Books extends APP_Controller
 		$error 		= '';
 		$valid      = TRUE;
 
-		$this->form_validation->set_rules('first_name', '<strong>Nombre</strong>', 'trim|required');
-		$this->form_validation->set_rules('last_name', '<strong>Apellido</strong>', 'trim|required');
-		$this->form_validation->set_rules('email', '<strong>Email</strong>', 'trim|required');
+		$this->form_validation->set_rules('title', '<strong>Titulo</strong>', 'trim|required');
+		$this->form_validation->set_rules('author', '<strong>Autor</strong>', 'trim|required');
 
 		$valid           = ($valid != FALSE) ? $this->form_validation->run($this) : $valid;
 		$error          .= validation_errors();
@@ -93,12 +92,11 @@ class Books extends APP_Controller
 		else
 		{
 			$data = array(
-				'first_name'    	=> $this->input->post('first_name'),
-				'last_name'     	=> $this->input->post('last_name'),
-				'statusId'      	=> (isset($_POST['statusId'])) ? $_POST['statusId'] : 0,
-				'email'      		=> $this->input->post('email'),
-				'phone'      		=> $this->input->post('phone'),
-				'cellphone'      	=> $this->input->post('cellphone')
+				'title'    			=> $this->input->post('title'),
+				'author'     		=> $this->input->post('author'),
+				'edition'     		=> $this->input->post('edition'),
+				'publication_date' 	=> $this->input->post('publication_date'),
+				'editorialId' 		=> $this->input->post('editorialId'),
 			);
 
 			if($this->books_model->save($data, $bookId))

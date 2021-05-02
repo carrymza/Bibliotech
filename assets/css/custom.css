@@ -133,3 +133,11 @@ table.dataTable  tbody td {
 	line-height: 40px;
 	cursor: pointer;
 }
+
+#modals #books.modal-lg {
+	max-width: 600px;
+}
+
+#modals #editorial.modal-lg {
+	max-width: 500px;
+}

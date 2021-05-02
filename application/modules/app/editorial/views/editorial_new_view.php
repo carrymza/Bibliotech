@@ -7,75 +7,14 @@
 		<div class="modal-body">
 			<form role="form" id="editorial-form" method="post" action="<?php echo base_url();?>editorial/insert" class="form" enctype="multipart/form-data" onsubmit="return false;">
 				<div class="response"></div>
-				<div class="row">
-					<div class="col-md-12">
-						<div class="row">
-							<div class="col-md-12 p-t-10">
-								<div class="col-md-12 header-section">
-									<h5 class="l-h-25"><i class="ti-id-badge"></i> Información Básica</h5>
-									<hr>
-								</div>
-								<div class="row form-group">
-									<div class="col-md-3 text-right">
-										<label for="first_name" class="label-style l-h-40">Nombre(s):</label>
-									</div>
-									<div class="col-md-7 alpha">
-										<input type="text" class="form-control" data-field="first_name" value="" name="first_name" id="first_name">
-										<span class="valid-message"></span>
-									</div>
-								</div>
-								<div class="row form-group">
-									<div class="col-md-3 text-right">
-										<label for="last_name" class="label-style l-h-40">Apellido(s):</label>
-									</div>
-									<div class="col-md-7 alpha">
-										<input type="text" class="form-control" data-field="last_name" value="" name="last_name" id="last_name">
-										<span class="valid-message"></span>
-									</div>
-								</div>
-								<div class="row form-group">
-									<div class="col-md-3 text-right">
-										<label for="statusId" class="label-style">Estado:</label>
-									</div>
-									<div class="col-md-8 alpha">
-										<input type="checkbox" name="statusId" id="statusId" value="1" class="checkbox-modal-1"/>
-										<label for="statusId">¿Editorial esta activo?</label>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-12 p-t-10">
-								<div class="col-md-12 header-section">
-									<h5 class="l-h-25"><i class="ti-agenda"></i> Contactos</h5>
-									<hr>
-								</div>
-								<div class="row form-group">
-									<div class="col-md-3 text-right">
-										<label for="email" class="label-style l-h-40">Email:</label>
-									</div>
-									<div class="col-md-7 alpha">
-										<input type="email" class="form-control" data-field="email" value="" name="email" id="email">
-										<span class="valid-message"></span>
-									</div>
-								</div>
-								<div class="row form-group">
-									<div class="col-md-3 text-right">
-										<label for="phone" class="label-style l-h-40">Tel&eacute;fono:</label>
-									</div>
-									<div class="col-md-7 alpha">
-										<input type="text" class="form-control phone-mask" data-field="phone" data-mask="(999) 999-9999" name="phone" id="phone">
-										<span class="valid-message"></span>
-									</div>
-								</div>
-								<div class="row form-group">
-									<div class="col-md-3 text-right">
-										<label for="cellphone" class="label-style l-h-40">Celular:</label>
-									</div>
-									<div class="col-md-7 alpha">
-										<input type="text" class="form-control phone-mask" data-field="cellphone" data-mask="(999) 999-9999" name="cellphone" id="cellphone">
-										<span class="valid-message"></span>
-									</div>
-								</div>
-							</div>
+				<div class="col-md-12 p-t-10">
+					<div class="row form-group">
+						<div class="col-md-3 text-right">
+							<label for="name" class="label-style l-h-40">Nombre:</label>
+						</div>
+						<div class="col-md-8 alpha">
+							<input type="text" class="form-control" data-field="name" value="" name="name" id="name">
+							<span class="valid-message"></span>
 						</div>
 					</div>
 				</div>
@@ -88,9 +27,9 @@
 </div>
 <script>
 	$(document).ready(function () {
-		let editorialForm = $('#editorial').formValid({
+		let editorialForm = $('#editorial-form').formValid({
 			fields: {
-				"first_name": {
+				"name": {
 					"required": true,
 					"tests": [
 						{
@@ -99,28 +38,6 @@
 						}
 					]
 				},
-				"last_name": {
-					"required": true,
-					"tests": [
-						{
-							"type"		: "null",
-							"message"	: "Este campo es requerido"
-						}
-					]
-				},
-				"email": {
-					"required": true,
-					"tests": [
-						{
-							"type"		: "null",
-							"message"	: "Este campo es requerido"
-						},
-						{
-							"type"		: "email",
-							"message"	: "Formato de email incorrecto"
-						}
-					]
-				}
 			}
 		});
 

@@ -11,7 +11,7 @@
  Target Server Version : 100414
  File Encoding         : 65001
 
- Date: 02/05/2021 09:40:28
+ Date: 02/05/2021 10:42:48
 */
 
 SET NAMES utf8mb4;
@@ -23,10 +23,12 @@ SET FOREIGN_KEY_CHECKS = 0;
 DROP TABLE IF EXISTS `ai_books`;
 CREATE TABLE `ai_books`  (
   `bookId` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `statusId` int NULL DEFAULT NULL,
-  `hidden` tinyint(1) NULL DEFAULT 0,
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `author` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `edition` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `publication_date` datetime(0) NULL DEFAULT NULL,
+  `hidden` tinyint(1) NULL DEFAULT 0,
+  `editorialId` int NULL DEFAULT 0,
   PRIMARY KEY (`bookId`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
@@ -43,11 +45,12 @@ CREATE TABLE `ai_editorials`  (
   `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `hidden` tinyint(1) NULL DEFAULT 0,
   PRIMARY KEY (`editorialId`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of ai_editorials
 -- ----------------------------
+INSERT INTO `ai_editorials` VALUES (1, 'Pearson', 1);
 
 -- ----------------------------
 -- Table structure for ai_loans
@@ -211,6 +214,22 @@ CREATE TABLE `ai_users_type`  (
 -- ----------------------------
 INSERT INTO `ai_users_type` VALUES (1, 'Administrador', NULL, 0);
 INSERT INTO `ai_users_type` VALUES (2, 'Usuario', NULL, 0);
+
+-- ----------------------------
+-- View structure for ai_books_view
+-- ----------------------------
+DROP VIEW IF EXISTS `ai_books_view`;
+CREATE ALGORITHM = UNDEFINED SQL SECURITY DEFINER VIEW `ai_books_view` AS SELECT
+	`a`.`bookId`,
+	a.title,
+	a.author,
+	a.edition,
+	a.publication_date,
+	a.hidden
+FROM
+	`ai_books` AS `a`
+WHERE
+	a.hidden = 0 ;
 
 -- ----------------------------
 -- View structure for ai_students_view

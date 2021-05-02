@@ -8,7 +8,6 @@
 						<div>
 							<ul class="breadcrumb">
 								<li class="breadcrumb-item"><a href="javascript:void(0);">Administrativo</a></li>
-								<li class="breadcrumb-item"><a href="javascript:void(0);">Personal</a></li>
 								<li class="breadcrumb-item active"><a href="javascript:void(0);">Usuarios</a></li>
 							</ul>
 						</div>

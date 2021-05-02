@@ -26,9 +26,9 @@
 											<thead>
 											<tr>
 												<th></th>
-												<th>Nombre</th>
-												<th>Email</th>
-												<th>Estado</th>
+												<th>Titulo</th>
+												<th>Autor</th>
+												<th>Edicion</th>
 												<th>Acción</th>
 											</tr>
 											</thead>

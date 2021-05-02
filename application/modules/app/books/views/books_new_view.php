@@ -12,7 +12,7 @@
 						<div class="col-md-3 text-right">
 							<label for="title" class="label-style l-h-40">Titulo:</label>
 						</div>
-						<div class="col-md-7 alpha">
+						<div class="col-md-8 alpha">
 							<input type="text" class="form-control" data-field="title" value="" name="title" id="title">
 							<span class="valid-message"></span>
 						</div>
@@ -21,18 +21,36 @@
 						<div class="col-md-3 text-right">
 							<label for="author" class="label-style l-h-40">Autor:</label>
 						</div>
-						<div class="col-md-7 alpha">
+						<div class="col-md-8 alpha">
 							<input type="text" class="form-control" data-field="author" value="" name="author" id="author">
 							<span class="valid-message"></span>
 						</div>
 					</div>
 					<div class="row form-group">
 						<div class="col-md-3 text-right">
-							<label for="statusId" class="label-style">Estado:</label>
+							<label for="typeId" class="label-style l-h-40">Editorial:</label>
+						</div>
+						<div class="col-md-7 alpha">
+							<?php echo form_dropdown('editorialId', $this->editorials, set_value('editorialId', 0), "id='editorialId' class='form-control select2'");?>
+							<span class="valid-message"></span>
+						</div>
+					</div>
+					<div class="row form-group">
+						<div class="col-md-3 text-right">
+							<label for="edition" class="label-style l-h-40">Edición:</label>
 						</div>
 						<div class="col-md-8 alpha">
-							<input type="checkbox" name="statusId" id="statusId" value="1" class="checkbox-modal-1"/>
-							<label for="statusId">¿Libro esta activo?</label>
+							<input type="text" class="form-control" data-field="edition" value="" name="edition" id="edition">
+							<span class="valid-message"></span>
+						</div>
+					</div>
+					<div class="row form-group">
+						<div class="col-md-3 text-right">
+							<label for="publication_date" class="label-style">Fecha de publicacion:</label>
+						</div>
+						<div class="col-md-5 alpha">
+							<input type="text" class="form-control date" value="<?php echo date('Y-m-d');?>" name="publication_date" id="publication_date" readonly>
+							<span class="valid-message"></span>
 						</div>
 					</div>
 				</div>
@@ -45,7 +63,7 @@
 </div>
 <script>
 	$(document).ready(function () {
-		let booksForm = $('#books').formValid({
+		let booksForm = $('#books-form').formValid({
 			fields: {
 				"title": {
 					"required": true,
@@ -56,7 +74,7 @@
 						}
 					]
 				},
-				"last_name": {
+				"author": {
 					"required": true,
 					"tests": [
 						{
@@ -65,19 +83,6 @@
 						}
 					]
 				},
-				"email": {
-					"required": true,
-					"tests": [
-						{
-							"type"		: "null",
-							"message"	: "Este campo es requerido"
-						},
-						{
-							"type"		: "email",
-							"message"	: "Formato de email incorrecto"
-						}
-					]
-				}
 			}
 		});
 
@@ -87,9 +92,9 @@
 			booksForm.test();
 			e.preventDefault();
 
-			if (booksForm.errors() > 0){
+			if (booksForm.errors() > 0) {
 				Ladda.stopAll();
-			}else {
+			} else {
 				let data = {type: 'post', form: '#books-form', modal: '#modals', doAfter: 'datatable', selector: '#books', btn: $(this), messageError: '.response', showAlert: true, titleResponse: "Exito!", textResponse: "Libro registrado correctamente."};
 				DOM.submitData(data);
 			}

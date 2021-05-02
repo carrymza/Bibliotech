@@ -5,7 +5,7 @@ class Editorial extends APP_Controller
 	public function __construct()
 	{
 		parent::__construct();
-		$this->title       	= 'Editorial';
+		$this->title       	= 'Editoriales';
 		$this->namespace   	= 'app';
 
 		$this->load->model('editorial/editorial_model');
@@ -22,8 +22,8 @@ class Editorial extends APP_Controller
 	{
 		if($this->input->is_ajax_request())
 		{
-			$columns    		= "editorialId,full_name,email,statusId";
-			$result     		= $this->editorial_model->datatable($columns, array("hidden" => 0), TRUE);
+			$columns    		= "editorialId,name";
+			$result     		= $this->editorial_model->datatable($columns, array("hidden" => 0), FALSE);
 			echo json_encode(array('data' => $result));
 		}
 	}
@@ -45,9 +45,7 @@ class Editorial extends APP_Controller
 		$error 		= '';
 		$valid      = TRUE;
 
-		$this->form_validation->set_rules('first_name', '<strong>Nombre</strong>', 'trim|required');
-		$this->form_validation->set_rules('last_name', '<strong>Apellido</strong>', 'trim|required');
-		$this->form_validation->set_rules('email', '<strong>Email</strong>', 'trim|required');
+		$this->form_validation->set_rules('name', '<strong>Nombre</strong>', 'trim|required');
 
 		$valid           = ($valid != FALSE) ? $this->form_validation->run($this) : $valid;
 		$error          .= validation_errors();
@@ -59,12 +57,7 @@ class Editorial extends APP_Controller
 		else
 		{
 			$data = array(
-				'first_name'    	=> $this->input->post('first_name'),
-				'last_name'     	=> $this->input->post('last_name'),
-				'statusId'      	=> (isset($_POST['statusId'])) ? $_POST['statusId'] : 0,
-				'email'      		=> $this->input->post('email'),
-				'phone'      		=> $this->input->post('phone'),
-				'cellphone'      	=> $this->input->post('cellphone')
+				'name'    	=> $this->input->post('name'),
 			);
 
 			if($this->editorial_model->save($data))
@@ -79,10 +72,7 @@ class Editorial extends APP_Controller
 		$error 		= '';
 		$valid      = TRUE;
 
-		$this->form_validation->set_rules('first_name', '<strong>Nombre</strong>', 'trim|required');
-		$this->form_validation->set_rules('last_name', '<strong>Apellido</strong>', 'trim|required');
-		$this->form_validation->set_rules('email', '<strong>Email</strong>', 'trim|required');
-
+		$this->form_validation->set_rules('name', '<strong>Nombre</strong>', 'trim|required');
 		$valid           = ($valid != FALSE) ? $this->form_validation->run($this) : $valid;
 		$error          .= validation_errors();
 
@@ -93,12 +83,7 @@ class Editorial extends APP_Controller
 		else
 		{
 			$data = array(
-				'first_name'    	=> $this->input->post('first_name'),
-				'last_name'     	=> $this->input->post('last_name'),
-				'statusId'      	=> (isset($_POST['statusId'])) ? $_POST['statusId'] : 0,
-				'email'      		=> $this->input->post('email'),
-				'phone'      		=> $this->input->post('phone'),
-				'cellphone'      	=> $this->input->post('cellphone')
+				'name'    	=> $this->input->post('name'),
 			);
 
 			if($this->editorial_model->save($data, $editorialId))
