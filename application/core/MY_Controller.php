@@ -8,6 +8,8 @@
 
 class MY_Controller extends MX_Controller
 {
+	public $app_name;
+
     public function __construct()
     {
         parent::__construct();

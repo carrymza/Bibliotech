@@ -9,6 +9,9 @@ class Dashboard extends APP_Controller
 		$this->namespace   = 'app';
 		$this->moduleId		= 1;
 		$this->load->model('students/students_model');
+		$this->load->model('loans/loans_model');
+		$this->load->model('books/books_model');
+		$this->load->model('teachers/teachers_model');
 	}
 
 	public function index()
@@ -23,6 +26,9 @@ class Dashboard extends APP_Controller
 	{
 		return array(
 			'students'  => $this->students_model->count_by(array("hidden" => 0)),
+			'books'  => $this->books_model->count_by(array("hidden" => 0)),
+			'loans'  => $this->loans_model->count_by(array("hidden" => 0)),
+			'teachers'  => $this->teachers_model->count_by(array("hidden" => 0)),
 		);
 	}
 }

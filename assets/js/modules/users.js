@@ -37,7 +37,7 @@ let loadDatatable = function () {
 		}
 	});
 
-	oTable.columns([0,1,6,7,8]).visible(false, false);
+	oTable.columns([0,5,6]).visible(false, false);
 };
 
 let imagesName = function (data) {

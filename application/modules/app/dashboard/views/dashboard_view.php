@@ -39,16 +39,16 @@
 						</div>
 
 						<div class="col-md-6 col-xl-3">
-							<div class="card client-blocks success-border">
-								<a href="<?php echo base_url('employees');?>">
+							<div class="card client-blocks dark-primary-border">
+								<a href="<?php echo base_url('teachers');?>">
 									<div class="card-body">
-										<h5>Libros</h5>
+										<h5>Docentes</h5>
 										<ul>
 											<li>
-												<i class="ti-user text-success"></i>
+												<i class="icon-people"></i>
 											</li>
-											<li class="text-right text-success">
-												<?php echo $header_data['students'];?>
+											<li class="text-right">
+												<?php echo $header_data['teachers'];?>
 											</li>
 										</ul>
 									</div>
@@ -58,15 +58,33 @@
 
 						<div class="col-md-6 col-xl-3">
 							<div class="card client-blocks success-border">
-								<a href="<?php echo base_url('employees');?>">
+								<a href="<?php echo base_url('books');?>">
+									<div class="card-body">
+										<h5>Libros</h5>
+										<ul>
+											<li>
+												<i class="ti-package text-success"></i>
+											</li>
+											<li class="text-right text-success">
+												<?php echo $header_data['books'];?>
+											</li>
+										</ul>
+									</div>
+								</a>
+							</div>
+						</div>
+
+						<div class="col-md-6 col-xl-3">
+							<div class="card client-blocks success-border">
+								<a href="<?php echo base_url('loans');?>">
 									<div class="card-body">
 										<h5>Libros prestados</h5>
 										<ul>
 											<li>
-												<i class="ti-user text-success"></i>
+												<i class="ti-package text-success"></i>
 											</li>
 											<li class="text-right text-success">
-												<?php echo $header_data['students'];?>
+												<?php echo $header_data['loans'];?>
 											</li>
 										</ul>
 									</div>

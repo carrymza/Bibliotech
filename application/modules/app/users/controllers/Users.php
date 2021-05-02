@@ -8,6 +8,8 @@ class Users extends APP_Controller
 		$this->title       	= 'Usuarios';
 		$this->namespace   	= 'app';
 
+		if($this->typeId != 1) redirect('dashboard');
+
 		$this->load->model('users/users_model');
 		$this->load->model('users/users_status_model');
 		$this->load->model('users/users_type_model');

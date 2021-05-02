@@ -11,46 +11,78 @@
  Target Server Version : 100414
  File Encoding         : 65001
 
- Date: 28/04/2021 21:15:24
+ Date: 02/05/2021 09:40:28
 */
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
 
 -- ----------------------------
--- Table structure for ai_settings
+-- Table structure for ai_books
 -- ----------------------------
-DROP TABLE IF EXISTS `ai_settings`;
-CREATE TABLE `ai_settings`  (
-  `settingId` int NOT NULL AUTO_INCREMENT,
-  `schoolId` int NULL DEFAULT 0,
-  `currencyId` int NULL DEFAULT NULL,
-  `language` varchar(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+DROP TABLE IF EXISTS `ai_books`;
+CREATE TABLE `ai_books`  (
+  `bookId` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `statusId` int NULL DEFAULT NULL,
   `hidden` tinyint(1) NULL DEFAULT 0,
-  PRIMARY KEY (`settingId`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+  `author` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`bookId`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
--- Records of ai_settings
+-- Records of ai_books
 -- ----------------------------
-INSERT INTO `ai_settings` VALUES (1, 1, 1, 'es', 0);
 
 -- ----------------------------
--- Table structure for ai_sex
+-- Table structure for ai_editorials
 -- ----------------------------
-DROP TABLE IF EXISTS `ai_sex`;
-CREATE TABLE `ai_sex`  (
-  `sexId` int NOT NULL AUTO_INCREMENT,
+DROP TABLE IF EXISTS `ai_editorials`;
+CREATE TABLE `ai_editorials`  (
+  `editorialId` int NOT NULL AUTO_INCREMENT,
   `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `hidden` tinyint(1) NULL DEFAULT 0,
-  PRIMARY KEY (`sexId`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+  PRIMARY KEY (`editorialId`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
--- Records of ai_sex
+-- Records of ai_editorials
 -- ----------------------------
-INSERT INTO `ai_sex` VALUES (1, 'Masculino', 0);
-INSERT INTO `ai_sex` VALUES (2, 'Femenino', 0);
+
+-- ----------------------------
+-- Table structure for ai_loans
+-- ----------------------------
+DROP TABLE IF EXISTS `ai_loans`;
+CREATE TABLE `ai_loans`  (
+  `loanId` int NOT NULL AUTO_INCREMENT,
+  `date` datetime(0) NULL DEFAULT NULL,
+  `personId` int NULL DEFAULT NULL,
+  `person_typeId` int NULL DEFAULT NULL,
+  `statusId` int NULL DEFAULT NULL,
+  `hidden` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`loanId`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of ai_loans
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for ai_returns
+-- ----------------------------
+DROP TABLE IF EXISTS `ai_returns`;
+CREATE TABLE `ai_returns`  (
+  `returnId` int NOT NULL AUTO_INCREMENT,
+  `date` datetime(0) NULL DEFAULT NULL,
+  `loanId` int NULL DEFAULT NULL,
+  `statusId` int NULL DEFAULT NULL,
+  `hidden` tinyint(1) NULL DEFAULT 0,
+  PRIMARY KEY (`returnId`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of ai_returns
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for ai_students
@@ -141,7 +173,7 @@ CREATE TABLE `ai_users`  (
 -- ----------------------------
 -- Records of ai_users
 -- ----------------------------
-INSERT INTO `ai_users` VALUES (1, 1, 'edelacruz9713@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Jesus Enmanuel', 'De La Cruz', 'edelacruz9713@gmail.com', '2020-06-11 10:15:49', NULL, NULL, 1, '', '', 0);
+INSERT INTO `ai_users` VALUES (1, 2, 'edelacruz9713@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Jesus Enmanuel', 'De La Cruz', 'edelacruz9713@gmail.com', '2020-06-11 10:15:49', NULL, NULL, 1, '', '', 0);
 
 -- ----------------------------
 -- Table structure for ai_users_status

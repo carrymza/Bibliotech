@@ -8,7 +8,16 @@
 
 class APP_Controller extends MY_Controller
 {
-    public function __construct()
+	public $is_logged_in;
+	public $userId;
+	public $first_name;
+	public $last_name;
+	public $email;
+	public $image;
+	public $typeId;
+	public $menu_type;
+
+	public function __construct()
     {
         parent::__construct();
         $this->is_logged_in			= (isset($this->session->userdata('app')['userdata']['is_logged_in'])) ? $this->session->userdata('app')['userdata']['is_logged_in']: 0;

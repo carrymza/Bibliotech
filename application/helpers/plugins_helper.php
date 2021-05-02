@@ -121,6 +121,22 @@ if( ! function_exists('display_js_files'))
 				$files .= '<script src="'.base_url().'assets/js/modules/teachers.js"></script>';
 				break;
 
+			case "books":
+				$files .= '<script src="'.base_url().'assets/js/modules/books.js"></script>';
+				break;
+
+			case "loans":
+				$files .= '<script src="'.base_url().'assets/js/modules/loans.js"></script>';
+				break;
+
+			case "editorial":
+				$files .= '<script src="'.base_url().'assets/js/modules/editorial.js"></script>';
+				break;
+
+			case "returns":
+				$files .= '<script src="'.base_url().'assets/js/modules/returns.js"></script>';
+				break;
+
 			case "users":
 				$files .= '<script src="'.base_url().'assets/js/modules/users.js"></script>';
 				break;
