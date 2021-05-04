@@ -24,16 +24,17 @@
 									<div class="dt-responsive table-responsive">
 										<table id="loans" class="table table-bordered nowrap">
 											<thead>
-											<tr>
-												<th></th>
-												<th>Nombre</th>
-												<th>Email</th>
-												<th>Estado</th>
-												<th>Acción</th>
-											</tr>
+												<tr>
+													<th></th>
+													<th></th>
+													<th>Beneficiario</th>
+													<th>Libro</th>
+													<th>Fecha de retorno</th>
+													<th>Estado</th>
+													<th>Acción</th>
+												</tr>
 											</thead>
 											<tbody>
-
 											</tbody>
 										</table>
 									</div>

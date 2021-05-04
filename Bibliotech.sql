@@ -11,7 +11,7 @@
  Target Server Version : 100414
  File Encoding         : 65001
 
- Date: 02/05/2021 10:42:48
+ Date: 03/05/2021 21:27:06
 */
 
 SET NAMES utf8mb4;
@@ -30,11 +30,12 @@ CREATE TABLE `ai_books`  (
   `hidden` tinyint(1) NULL DEFAULT 0,
   `editorialId` int NULL DEFAULT 0,
   PRIMARY KEY (`bookId`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of ai_books
 -- ----------------------------
+INSERT INTO `ai_books` VALUES (1, 'dsfsdfs', 'dfsdfs', 'dfsdf', '2021-05-03 20:31:25', 0, 1);
 
 -- ----------------------------
 -- Table structure for ai_editorials
@@ -62,13 +63,16 @@ CREATE TABLE `ai_loans`  (
   `personId` int NULL DEFAULT NULL,
   `person_typeId` int NULL DEFAULT NULL,
   `statusId` int NULL DEFAULT NULL,
-  `hidden` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `bookId` int NULL DEFAULT 0,
+  `return_date` datetime(0) NULL DEFAULT NULL,
+  `hidden` tinyint(1) NULL DEFAULT 0,
   PRIMARY KEY (`loanId`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of ai_loans
 -- ----------------------------
+INSERT INTO `ai_loans` VALUES (1, '2021-05-03 21:26:16', 1, 0, NULL, 1, '2021-05-03 00:00:00', 0);
 
 -- ----------------------------
 -- Table structure for ai_returns
@@ -230,6 +234,29 @@ FROM
 	`ai_books` AS `a`
 WHERE
 	a.hidden = 0 ;
+
+-- ----------------------------
+-- View structure for ai_loans_view
+-- ----------------------------
+DROP VIEW IF EXISTS `ai_loans_view`;
+CREATE ALGORITHM = UNDEFINED SQL SECURITY DEFINER VIEW `ai_loans_view` AS SELECT
+	a.loanId,
+	a.person_typeId,
+IF
+	(
+		a.person_typeId = 1,
+		CONCAT( b.first_name, ' ', b.last_name ),
+	CONCAT( c.first_name, ' ', c.last_name )) AS full_name,
+	a.return_date,
+	d.title AS book_title,
+	a.statusId,
+	a.hidden
+FROM
+	ai_loans AS a
+	LEFT JOIN ai_students AS b ON b.studentId = a.personId
+	LEFT JOIN ai_teachers AS c ON c.teacherId = a.personId 
+	LEFT JOIN ai_books AS d on d.bookId = a.bookId
+	WHERE a.hidden = 0 ;
 
 -- ----------------------------
 -- View structure for ai_students_view

@@ -7,75 +7,35 @@
 		<div class="modal-body">
 			<form role="form" id="loans-form" method="post" action="<?php echo base_url();?>loans/insert" class="form" enctype="multipart/form-data" onsubmit="return false;">
 				<div class="response"></div>
-				<div class="row">
-					<div class="col-md-12">
-						<div class="row">
-							<div class="col-md-12 p-t-10">
-								<div class="col-md-12 header-section">
-									<h5 class="l-h-25"><i class="ti-id-badge"></i> Información Básica</h5>
-									<hr>
-								</div>
-								<div class="row form-group">
-									<div class="col-md-3 text-right">
-										<label for="first_name" class="label-style l-h-40">Nombre(s):</label>
-									</div>
-									<div class="col-md-7 alpha">
-										<input type="text" class="form-control" data-field="first_name" value="" name="first_name" id="first_name">
-										<span class="valid-message"></span>
-									</div>
-								</div>
-								<div class="row form-group">
-									<div class="col-md-3 text-right">
-										<label for="last_name" class="label-style l-h-40">Apellido(s):</label>
-									</div>
-									<div class="col-md-7 alpha">
-										<input type="text" class="form-control" data-field="last_name" value="" name="last_name" id="last_name">
-										<span class="valid-message"></span>
-									</div>
-								</div>
-								<div class="row form-group">
-									<div class="col-md-3 text-right">
-										<label for="statusId" class="label-style">Estado:</label>
-									</div>
-									<div class="col-md-8 alpha">
-										<input type="checkbox" name="statusId" id="statusId" value="1" class="checkbox-modal-1"/>
-										<label for="statusId">¿Estudiante esta activo?</label>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-12 p-t-10">
-								<div class="col-md-12 header-section">
-									<h5 class="l-h-25"><i class="ti-agenda"></i> Contactos</h5>
-									<hr>
-								</div>
-								<div class="row form-group">
-									<div class="col-md-3 text-right">
-										<label for="email" class="label-style l-h-40">Email:</label>
-									</div>
-									<div class="col-md-7 alpha">
-										<input type="email" class="form-control" data-field="email" value="" name="email" id="email">
-										<span class="valid-message"></span>
-									</div>
-								</div>
-								<div class="row form-group">
-									<div class="col-md-3 text-right">
-										<label for="phone" class="label-style l-h-40">Tel&eacute;fono:</label>
-									</div>
-									<div class="col-md-7 alpha">
-										<input type="text" class="form-control phone-mask" data-field="phone" data-mask="(999) 999-9999" name="phone" id="phone">
-										<span class="valid-message"></span>
-									</div>
-								</div>
-								<div class="row form-group">
-									<div class="col-md-3 text-right">
-										<label for="cellphone" class="label-style l-h-40">Celular:</label>
-									</div>
-									<div class="col-md-7 alpha">
-										<input type="text" class="form-control phone-mask" data-field="cellphone" data-mask="(999) 999-9999" name="cellphone" id="cellphone">
-										<span class="valid-message"></span>
-									</div>
-								</div>
-							</div>
+				<div>
+					<input type="hidden" name="person_typeId" id="person_typeId" value="0">
+				</div>
+				<div class="col-md-12 p-t-10">
+					<div class="row form-group">
+						<div class="col-md-3 text-right">
+							<label for="personId" class="label-style l-h-40">Beneficiario:</label>
+						</div>
+						<div class="col-md-7 alpha">
+							<?php echo form_dropdown_data('personId', $this->people, set_value('personId', 0), "id='personId' class='form-control select2'");?>
+							<span class="valid-message"></span>
+						</div>
+					</div>
+					<div class="row form-group">
+						<div class="col-md-3 text-right">
+							<label for="bookId" class="label-style l-h-40">Libro:</label>
+						</div>
+						<div class="col-md-7 alpha">
+							<?php echo form_dropdown('bookId', $this->books, set_value('bookId', 0), "id='bookId' class='form-control select2'");?>
+							<span class="valid-message"></span>
+						</div>
+					</div>
+					<div class="row form-group">
+						<div class="col-md-3 text-right">
+							<label for="return_date" class="label-style l-h-40">Fecha de retorno:</label>
+						</div>
+						<div class="col-md-5 alpha">
+							<input type="text" class="form-control date" value="<?php echo date('Y-m-d');?>" name="return_date" id="return_date" readonly>
+							<span class="valid-message"></span>
 						</div>
 					</div>
 				</div>
@@ -88,7 +48,7 @@
 </div>
 <script>
 	$(document).ready(function () {
-		let loansForm = $('#loans').formValid({
+		let loansForm = $('#loans-form').formValid({
 			fields: {
 				"first_name": {
 					"required": true,
@@ -108,19 +68,6 @@
 						}
 					]
 				},
-				"email": {
-					"required": true,
-					"tests": [
-						{
-							"type"		: "null",
-							"message"	: "Este campo es requerido"
-						},
-						{
-							"type"		: "email",
-							"message"	: "Formato de email incorrecto"
-						}
-					]
-				}
 			}
 		});
 
@@ -132,10 +79,14 @@
 
 			if (loansForm.errors() > 0){
 				Ladda.stopAll();
-			}else {
-				let data = {type: 'post', form: '#loans-form', modal: '#modals', doAfter: 'datatable', selector: '#loans', btn: $(this), messageError: '.response', showAlert: true, titleResponse: "Exito!", textResponse: "Estudiante registrado correctamente."};
+			} else {
+				let data = {type: 'post', form: '#loans-form', modal: '#modals', doAfter: 'datatable', selector: '#loans', btn: $(this), messageError: '.response', showAlert: true, titleResponse: "Exito!", textResponse: "Prestamo registrado correctamente."};
 				DOM.submitData(data);
 			}
+		});
+
+		$(document).on('change', "#personId", function () {
+			$("#person_typeId").val($(this).data('type'));
 		});
 	});
 </script>

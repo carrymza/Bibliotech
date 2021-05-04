@@ -11,8 +11,11 @@ class Loans extends APP_Controller
 		$this->load->model('loans/loans_model');
 		$this->load->model('editorial/editorial_model');
 		$this->load->model('teachers/teachers_model');
-		$this->load->model('loans/loans_model');
+		$this->load->model('students/students_model');
 		$this->load->model('books/books_model');
+
+		$this->people 	= $this->students_model->get_people();
+		$this->books	= $this->books_model->get_assoc_list(array("bookId AS id", "title AS name"), array("hidden" => 0));
 	}
 
 	public function index()
@@ -26,7 +29,7 @@ class Loans extends APP_Controller
 	{
 		if($this->input->is_ajax_request())
 		{
-			$columns    		= "loanId,full_name,email,statusId";
+			$columns    		= "loanId,person_typeId,full_name,return_date,book_title,statusId";
 			$result     		= $this->loans_model->datatable($columns, array("hidden" => 0), TRUE);
 			echo json_encode(array('data' => $result));
 		}
@@ -49,9 +52,7 @@ class Loans extends APP_Controller
 		$error 		= '';
 		$valid      = TRUE;
 
-		$this->form_validation->set_rules('first_name', '<strong>Nombre</strong>', 'trim|required');
-		$this->form_validation->set_rules('last_name', '<strong>Apellido</strong>', 'trim|required');
-		$this->form_validation->set_rules('email', '<strong>Email</strong>', 'trim|required');
+		$this->form_validation->set_rules('return_date', '<strong>Fecha de retorno</strong>', 'trim|required');
 
 		$valid           = ($valid != FALSE) ? $this->form_validation->run($this) : $valid;
 		$error          .= validation_errors();
@@ -63,12 +64,12 @@ class Loans extends APP_Controller
 		else
 		{
 			$data = array(
-				'first_name'    	=> $this->input->post('first_name'),
-				'last_name'     	=> $this->input->post('last_name'),
-				'statusId'      	=> (isset($_POST['statusId'])) ? $_POST['statusId'] : 0,
-				'email'      		=> $this->input->post('email'),
-				'phone'      		=> $this->input->post('phone'),
-				'cellphone'      	=> $this->input->post('cellphone')
+				'personId'    		=> $this->input->post('personId'),
+				'person_typeId'     => $this->input->post('person_typeId'),
+				'date'				=> timestamp_to_date(gmt_to_local(now(), 'UTC', FALSE), "Y-m-d H:i:s"),
+				'statusId'      	=> $this->input->post('statusId'),
+				'bookId'      		=> $this->input->post('bookId'),
+				'return_date'      	=> $this->input->post('return_date')
 			);
 
 			if($this->loans_model->save($data))
@@ -83,9 +84,7 @@ class Loans extends APP_Controller
 		$error 		= '';
 		$valid      = TRUE;
 
-		$this->form_validation->set_rules('first_name', '<strong>Nombre</strong>', 'trim|required');
-		$this->form_validation->set_rules('last_name', '<strong>Apellido</strong>', 'trim|required');
-		$this->form_validation->set_rules('email', '<strong>Email</strong>', 'trim|required');
+		$this->form_validation->set_rules('return_date', '<strong>Fecha de retorno</strong>', 'trim|required');
 
 		$valid           = ($valid != FALSE) ? $this->form_validation->run($this) : $valid;
 		$error          .= validation_errors();
@@ -97,12 +96,11 @@ class Loans extends APP_Controller
 		else
 		{
 			$data = array(
-				'first_name'    	=> $this->input->post('first_name'),
-				'last_name'     	=> $this->input->post('last_name'),
-				'statusId'      	=> (isset($_POST['statusId'])) ? $_POST['statusId'] : 0,
-				'email'      		=> $this->input->post('email'),
-				'phone'      		=> $this->input->post('phone'),
-				'cellphone'      	=> $this->input->post('cellphone')
+				'personId'    		=> $this->input->post('personId'),
+				'person_typeId'     => $this->input->post('person_typeId'),
+				'statusId'      	=> $this->input->post('statusId'),
+				'bookId'      		=> $this->input->post('bookId'),
+				'return_date'      	=> $this->input->post('return_date')
 			);
 
 			if($this->loans_model->save($data, $loanId))

@@ -8,20 +8,20 @@ let loadDatatable = function () {
 			url : URL.baseUrl()+'loans/datatable'
 		},
 		"columns" : [
-			{ "data" : "loanId", 	"sClass": "dt-loanId",   		"width": "0%",  	"defaultContent": "<span class='text-muted'>N/A</span>"},
+			{ "data" : "loanId", 		"sClass": "dt-loanId",   			"width": "0%",  	"defaultContent": "<span class='text-muted'>N/A</span>"},
+			{ "data" : "person_typeId", "sClass": "dt-person_typeId",   	"width": "0%",  	"defaultContent": "<span class='text-muted'>N/A</span>"},
 			{ "data" : "full_name", 	"sClass": "dt-full_name",         	"width": "40%", 	"defaultContent": "<span class='text-muted'>N/A</span>"},
-			{ "data" : "email",     	"sClass": "dt-email",           	"width": "35%", 	"defaultContent": "<span class='text-muted'>N/A</span>"},
+			{ "data" : "book_title",    "sClass": "dt-book_title",          "width": "35%", 	"defaultContent": "<span class='text-muted'>N/A</span>"},
+			{ "data" : "return_date",  	"sClass": "dt-return_date",         "width": "15%", 	"defaultContent": "<span class='text-muted'>N/A</span>"},
 			{ "data" : "statusId",  	"sClass": "dt-statusId",          	"width": "15%", 	"defaultContent": "<span class='text-muted'>N/A</span>"},
 			{ "data" : "action",    	"sClass": "dt-action text-center",	"width": "10%", 	"defaultContent": "<span class='text-muted'>N/A</span>"},
 		],
 		"createdRow": function(row, data){
-			$('.dt-full_name', row).html(UTIL.imagesName(data));
-			$('.dt-statusId', row).html(status(data));
 			$('.dt-action', row).html(options(data));
 		}
 	});
 
-	oTable.columns([0]).visible(false, false);
+	oTable.columns([0,1]).visible(false, false);
 };
 
 let options = function (data) {
@@ -35,10 +35,4 @@ let options = function (data) {
 	html +='</div></div>';
 
 	return html;
-};
-
-let status = function (data) {
-	let statusClass = (data.statusId == 1) ? "primary" : "default",
-		statusName	= (data.statusId == 1) ? "Activo" : "Inactivo";
-	return '<span class="label label-md badge-' + statusClass + '">' + statusName + '</span>';
 };
