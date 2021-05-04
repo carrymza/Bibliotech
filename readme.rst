@@ -1,4 +1,4 @@
-Proyecto Final de Ingenieria de Software 1 - Sistema de Gestion de Biblioetecas
+Proyecto Final de Ingenieria de Software 1 - Sistema de Gestion de Bibliotecas
 
 ###################
 What is CodeIgniter
