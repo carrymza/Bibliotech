@@ -1,5 +1,5 @@
 RewriteEngine On
-RewriteBase /Bibliotech
+RewriteBase /
 
 php_value max_input_vars 4000
 php_value suhosin.get.max_vars 4000
