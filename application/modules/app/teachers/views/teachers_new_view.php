@@ -35,6 +35,15 @@
 								</div>
 								<div class="row form-group">
 									<div class="col-md-3 text-right">
+										<label for="typeId" class="label-style l-h-40">Editorial:</label>
+									</div>
+									<div class="col-md-7 alpha">
+										<?php echo form_dropdown('editorialId', $this->editorials, set_value('editorialId', 0), "id='editorialId' class='form-control select2'");?>
+										<span class="valid-message"></span>
+									</div>
+								</div>
+								<div class="row form-group">
+									<div class="col-md-3 text-right">
 										<label for="statusId" class="label-style">Estado:</label>
 									</div>
 									<div class="col-md-8 alpha">

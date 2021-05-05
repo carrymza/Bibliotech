@@ -35,6 +35,18 @@
 								</div>
 								<div class="row form-group">
 									<div class="col-md-3 text-right">
+										<label for="doc_typeId" class="label-style l-h-40">Tipo de documento:</label>
+									</div>
+									<div class="col-md-3 alpha">
+										<?php echo form_dropdown('doc_typeId', $this->document_type, set_value('doc_typeId', 0), "id='doc_typeId' class='form-control select2'");?>
+									</div>
+									<div class="col-md-4 alpha">
+										<input type="text" class="form-control" data-field="document" value="" name="document" id="document">
+										<span class="valid-message"></span>
+									</div>
+								</div>
+								<div class="row form-group">
+									<div class="col-md-3 text-right">
 										<label for="statusId" class="label-style">Estado:</label>
 									</div>
 									<div class="col-md-8 alpha">
@@ -100,6 +112,15 @@
 					]
 				},
 				"last_name": {
+					"required": true,
+					"tests": [
+						{
+							"type"		: "null",
+							"message"	: "Este campo es requerido"
+						}
+					]
+				},
+				"document": {
 					"required": true,
 					"tests": [
 						{

@@ -11,7 +11,7 @@
  Target Server Version : 100408
  File Encoding         : 65001
 
- Date: 05/05/2021 14:00:43
+ Date: 05/05/2021 14:44:39
 */
 
 SET NAMES utf8mb4;
@@ -159,17 +159,20 @@ CREATE TABLE `ai_students`  (
   `last_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `creation_date` datetime(0) NULL DEFAULT NULL,
   `statusId` int(11) NULL DEFAULT 0,
-  `hidden` tinyint(1) NULL DEFAULT 0,
   `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `phone` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `cellphone` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `doc_typeId` int(11) NULL DEFAULT 0,
+  `document` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `number` int(11) NULL DEFAULT 0,
+  `hidden` tinyint(1) NULL DEFAULT 0,
   PRIMARY KEY (`studentId`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of ai_students
 -- ----------------------------
-INSERT INTO `ai_students` VALUES (1, 'Jesus Enmanuel', 'De La Cruz', NULL, 1, 0, 'edelacruz9713@gmail.com', '809-906-0295', '809-906-0295');
+INSERT INTO `ai_students` VALUES (1, 'Jesus Enmanuel', 'De La Cruz', NULL, 1, 'edelacruz9713@gmail.com', '809-906-0295', '809-906-0295', 0, NULL, 0, 0);
 
 -- ----------------------------
 -- Table structure for ai_teachers
@@ -181,17 +184,20 @@ CREATE TABLE `ai_teachers`  (
   `last_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `creation_date` datetime(0) NULL DEFAULT NULL,
   `statusId` int(11) NULL DEFAULT 0,
-  `hidden` tinyint(1) NULL DEFAULT 0,
   `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `phone` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `cellphone` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `doc_typeId` int(11) NULL DEFAULT 0,
+  `document` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `number` int(11) NULL DEFAULT 0,
+  `hidden` tinyint(1) NULL DEFAULT 0,
   PRIMARY KEY (`teacherId`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of ai_teachers
 -- ----------------------------
-INSERT INTO `ai_teachers` VALUES (1, 'Jesus Enmanuel', 'De La Cruz', NULL, 1, 0, 'edelacruz9713@gmail.com', '809-906-0295', '809-906-0295');
+INSERT INTO `ai_teachers` VALUES (1, 'Jesus Enmanuel', 'De La Cruz', NULL, 1, 'edelacruz9713@gmail.com', '809-906-0295', '809-906-0295', 0, NULL, 0, 0);
 
 -- ----------------------------
 -- Table structure for ai_type_documents
@@ -326,12 +332,13 @@ CREATE ALGORITHM = UNDEFINED SQL SECURITY DEFINER VIEW `ai_students_view` AS SEL
 	`a`.`studentId` AS `studentId`,
 	concat( `a`.`first_name`, ' ', `a`.`last_name` ) AS `full_name`,
 	a.email,
+	a.document,
 	a.statusId,
 	a.hidden
 FROM
 	`ai_students` AS `a`
 WHERE
-	a.hidden = 0 ; ;
+	a.hidden = 0 ;
 
 -- ----------------------------
 -- View structure for ai_teachers_view
@@ -342,11 +349,12 @@ CREATE ALGORITHM = UNDEFINED SQL SECURITY DEFINER VIEW `ai_teachers_view` AS SEL
 	concat( `a`.`first_name`, ' ', `a`.`last_name` ) AS `full_name`,
 	a.email,
 	a.statusId,
+	a.document,
 	a.hidden
 FROM
 	`ai_teachers` AS `a`
 WHERE
-	a.hidden = 0 ; ;
+	a.hidden = 0 ;
 
 -- ----------------------------
 -- View structure for ai_users_view

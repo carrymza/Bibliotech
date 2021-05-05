@@ -10,6 +10,7 @@ let loadDatatable = function () {
 		"columns" : [
 			{ "data" : "studentId", 	"sClass": "dt-studentId",   		"width": "0%",  	"defaultContent": "<span class='text-muted'>N/A</span>"},
 			{ "data" : "full_name", 	"sClass": "dt-full_name",         	"width": "40%", 	"defaultContent": "<span class='text-muted'>N/A</span>"},
+			{ "data" : "document",     	"sClass": "dt-document",           	"width": "35%", 	"defaultContent": "<span class='text-muted'>N/A</span>"},
 			{ "data" : "email",     	"sClass": "dt-email",           	"width": "35%", 	"defaultContent": "<span class='text-muted'>N/A</span>"},
 			{ "data" : "statusId",  	"sClass": "dt-statusId",          	"width": "15%", 	"defaultContent": "<span class='text-muted'>N/A</span>"},
 			{ "data" : "action",    	"sClass": "dt-action text-center",	"width": "10%", 	"defaultContent": "<span class='text-muted'>N/A</span>"},

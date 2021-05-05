@@ -25,7 +25,7 @@ class Students extends APP_Controller
 	{
 		if($this->input->is_ajax_request())
 		{
-			$columns    		= "studentId,full_name,email,statusId";
+			$columns    		= "studentId,full_name,email,statusId,document";
 			$result     		= $this->students_model->datatable($columns, array("hidden" => 0), TRUE);
 			echo json_encode(array('data' => $result));
 		}
@@ -64,6 +64,8 @@ class Students extends APP_Controller
 			$data = array(
 				'first_name'    	=> $this->input->post('first_name'),
 				'last_name'     	=> $this->input->post('last_name'),
+				'doc_typeId'     	=> $this->input->post('doc_typeId'),
+				'document'     		=> $this->input->post('document'),
 				'statusId'      	=> (isset($_POST['statusId'])) ? $_POST['statusId'] : 0,
 				'email'      		=> $this->input->post('email'),
 				'phone'      		=> $this->input->post('phone'),
@@ -98,6 +100,8 @@ class Students extends APP_Controller
 			$data = array(
 				'first_name'    	=> $this->input->post('first_name'),
 				'last_name'     	=> $this->input->post('last_name'),
+				'doc_typeId'     	=> $this->input->post('doc_typeId'),
+				'document'     		=> $this->input->post('document'),
 				'statusId'      	=> (isset($_POST['statusId'])) ? $_POST['statusId'] : 0,
 				'email'      		=> $this->input->post('email'),
 				'phone'      		=> $this->input->post('phone'),

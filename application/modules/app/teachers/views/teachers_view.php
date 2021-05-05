@@ -27,6 +27,7 @@
 											<tr>
 												<th></th>
 												<th>Nombre</th>
+												<th>Doc. de Identidad</th>
 												<th>Email</th>
 												<th>Estado</th>
 												<th>Acción</th>
