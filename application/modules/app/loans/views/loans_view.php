@@ -28,7 +28,7 @@
 													<th></th>
 													<th></th>
 													<th>Beneficiario</th>
-													<th>Libro</th>
+													<th># de Libros</th>
 													<th>Fecha de retorno</th>
 													<th>Estado</th>
 													<th>Acción</th>

@@ -32,7 +32,7 @@ class Loans extends APP_Controller
 	{
 		if($this->input->is_ajax_request())
 		{
-			$columns    		= "loanId,person_typeId,full_name,return_date,book_title,statusId";
+			$columns    		= "loanId,person_typeId,full_name,return_date,count_books,status";
 			$result     		= $this->loans_model->datatable($columns, array("hidden" => 0), TRUE);
 			echo json_encode(array('data' => $result));
 		}
