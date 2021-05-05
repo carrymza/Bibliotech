@@ -83,7 +83,7 @@ INSERT INTO `ai_loans` VALUES (3, '2021-05-04 21:51:04', 1, 0, 2, 0, '2021-05-04
 -- ----------------------------
 DROP TABLE IF EXISTS `ai_loans_items`;
 CREATE TABLE `ai_loans_items`  (
-  `ItemId` int NOT NULL AUTO_INCREMENT,
+  `itemId` int NOT NULL AUTO_INCREMENT,
   `loanId` int NULL DEFAULT 0,
   `bookId` int NULL DEFAULT 0,
   `quantity` int NULL DEFAULT 0,
@@ -133,6 +133,25 @@ CREATE TABLE `ai_returns`  (
 -- ----------------------------
 -- Records of ai_returns
 -- ----------------------------
+
+-- ----------------------------
+-- Table structure for ai_loans_status
+-- ----------------------------
+DROP TABLE IF EXISTS `ai_returns_status`;
+CREATE TABLE `ai_returns_status`  (
+                                    `statusId` int NOT NULL AUTO_INCREMENT,
+                                    `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+                                    `class` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+                                    `hidden` tinyint NULL DEFAULT NULL,
+                                    PRIMARY KEY (`statusId`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of ai_returns_status
+-- ----------------------------
+INSERT INTO `ai_returns_status` VALUES (1, 'Borrador', NULL, 0);
+INSERT INTO `ai_returns_status` VALUES (2, 'Regresado', NULL, 0);
+INSERT INTO `ai_returns_status` VALUES (3, 'Cancelado', NULL, 0);
 
 -- ----------------------------
 -- Table structure for ai_students

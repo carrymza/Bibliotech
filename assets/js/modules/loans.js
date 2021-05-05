@@ -29,9 +29,16 @@ let options = function (data) {
 		html 	= '';
 	html += '<div class="dropdown-primary dropdown open">\n' +
 		'<button class="btn btn-primary dropdown-toggle" type="button" id="dropdown-2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="ti-more-alt"></i></button>\n' +
-		'<div class="dropdown-menu" aria-labelledby="dropdown-2" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">\n' +
-		'<a class="dropdown-item modal_trigger" data-target="#modals" data-toggle="modal" href="javascript:void(0);" data-url="'+URL.baseUrl()+'loans/edit/'+id+'"><i class="ti-pencil-alt"></i> Editar</a>\n'+
-		'<a class="dropdown-item delete_dt_item" data-table="#loans" data-url="'+URL.baseUrl()+'loans/delete/'+id+'" href="javascript:void(0);"><i class="ti-trash"></i> Eliminar</a>\n';
+		'<div class="dropdown-menu" aria-labelledby="dropdown-2" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">';
+	if(Number(data.statusId) == 1) {
+		html += '<a class="dropdown-item delete_dt_item" data-table="#loans" data-url="'+URL.baseUrl()+'loans/delete/'+id+'" href="javascript:void(0);"><i class="ti-trash"></i> Eliminar</a>\n';
+		html += '<a class="dropdown-item modal_trigger" data-target="#modals" data-toggle="modal" href="javascript:void(0);" data-url="'+URL.baseUrl()+'loans/edit/'+id+'"><i class="ti-pencil-alt"></i> Editar</a>';
+	}
+	else if(Number(data.statusId) == 2) {
+		html += '<a class="dropdown-item delete_dt_item" data-table="#loans" data-url="'+URL.baseUrl()+'loans/cancel/'+id+'" href="javascript:void(0);"><i class="ti-trash"></i> Cancelar</a>\n';
+		html += '<a class="dropdown-item modal_trigger" data-target="#modals" data-toggle="modal" data-url="'+URL.baseUrl()+'returns/add/'+id+'" href="javascript:void(0);"><i class="ti-trash"></i> Registrar Retorno</a>\n';
+	}
+	html += '<a class="dropdown-item modal_trigger" data-target="#modals" data-toggle="modal" href="javascript:void(0);" data-url="'+URL.baseUrl()+'loans/preview/'+id+'"><i class="ti-pencil-alt"></i> Ver</a>';
 	html +='</div></div>';
 
 	return html;

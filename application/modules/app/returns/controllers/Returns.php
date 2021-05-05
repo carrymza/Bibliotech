@@ -28,9 +28,13 @@ class Returns extends APP_Controller
 		}
 	}
 
-	public function add()
+	public function add($loanId = FALSE)
 	{
 		$data = array();
+		if($loanId != FALSE)
+		{
+			$data['loanId'] = $loanId;
+		}
 		echo json_encode(array('result' => 1, 'view' => $this->load->view('returns/returns_new_view', $data, TRUE)));
 	}
 

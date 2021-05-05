@@ -138,11 +138,26 @@ class Loans extends APP_Controller
 					);
 
 					$this->loans_items_model->save($data_item, $itemId);
+
+					if($data['statusId'] != 1)
+					{
+						$book = $this->books_model->get_by(array("bookId" => $_POST['bookId'][$key]), true);
+						$this->books_model->save(array("quantity" => $book->quantity - $data_item['quantity']), $_POST['bookId'][$key]);
+					}
 				}
 
 				echo json_encode(array("result" => 1));
 			}
 		}
+	}
+
+	public function preview($loanId)
+	{
+		$data = array(
+			"row" 	=> $this->loans_model->get_loan_data($loanId),
+			"items" => $this->loans_items_model->get_items($loanId)
+		);
+		echo json_encode(array('result' => 1, 'view' => $this->load->view('loans/loans_preview_view', $data, TRUE)));
 	}
 
 	public function delete($loanId)
