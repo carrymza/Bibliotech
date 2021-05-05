@@ -12,6 +12,7 @@ let loadDatatable = function () {
 			{ "data" : "title", 		"sClass": "dt-title",         		"width": "40%", 	"defaultContent": "<span class='text-muted'>N/A</span>"},
 			{ "data" : "author",     	"sClass": "dt-author",           	"width": "35%", 	"defaultContent": "<span class='text-muted'>N/A</span>"},
 			{ "data" : "edition",  		"sClass": "dt-edition",          	"width": "15%", 	"defaultContent": "<span class='text-muted'>N/A</span>"},
+			{ "data" : "quantity",  	"sClass": "dt-quantity",          	"width": "15%", 	"defaultContent": "<span class='text-muted'>N/A</span>"},
 			{ "data" : "action",    	"sClass": "dt-action text-center",	"width": "10%", 	"defaultContent": "<span class='text-muted'>N/A</span>"},
 		],
 		"createdRow": function(row, data){

@@ -1,7 +1,7 @@
 <div class="modal-dialog modal-lg" id="books" role="document">
 	<div class="modal-content">
 		<div class="modal-header">
-			<h5 class="modal-title" id="myModalLabel"><i class="icon-people p-r-7"></i>Editar Libro  <span class="books-title">/ <?php echo $row->title;?></span></h5>
+			<h5 class="modal-title" id="myModalLabel"><i class="ti-package p-r-7"></i>Editar Libro  <span class="books-title">/ <?php echo $row->title;?></span></h5>
 			<a href="javascript:void(0);" class="close" data-dismiss="modal" aria-hidden="true"><i class="icon-close"></i></a>
 		</div>
 		<div class="modal-body">
@@ -53,6 +53,15 @@
 							<span class="valid-message"></span>
 						</div>
 					</div>
+					<div class="row form-group">
+						<div class="col-md-3 text-right">
+							<label for="quantity" class="label-style">Cantidad disponible:</label>
+						</div>
+						<div class="col-md-8 alpha">
+							<input type="text" class="form-control" data-field="quantity" value="" name="quantity" id="quantity">
+							<span class="valid-message"></span>
+						</div>
+					</div>
 				</div>
 			</form>
 		</div>
@@ -75,6 +84,15 @@
 					]
 				},
 				"author": {
+					"required": true,
+					"tests": [
+						{
+							"type"		: "null",
+							"message"	: "Este campo es requerido"
+						}
+					]
+				},
+				"quantity": {
 					"required": true,
 					"tests": [
 						{

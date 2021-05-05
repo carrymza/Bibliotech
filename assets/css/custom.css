@@ -141,3 +141,6 @@ table.dataTable  tbody td {
 #modals #editorial.modal-lg {
 	max-width: 500px;
 }
+.swal2-z-indez {
+	z-index: 11111111111 !important;
+}

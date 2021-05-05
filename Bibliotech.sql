@@ -11,7 +11,7 @@
  Target Server Version : 100414
  File Encoding         : 65001
 
- Date: 03/05/2021 21:27:06
+ Date: 04/05/2021 21:54:00
 */
 
 SET NAMES utf8mb4;
@@ -27,15 +27,17 @@ CREATE TABLE `ai_books`  (
   `author` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `edition` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `publication_date` datetime(0) NULL DEFAULT NULL,
-  `hidden` tinyint(1) NULL DEFAULT 0,
   `editorialId` int NULL DEFAULT 0,
+  `quantity` int NULL DEFAULT 0,
+  `hidden` tinyint(1) NULL DEFAULT 0,
   PRIMARY KEY (`bookId`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of ai_books
 -- ----------------------------
-INSERT INTO `ai_books` VALUES (1, 'dsfsdfs', 'dfsdfs', 'dfsdf', '2021-05-03 20:31:25', 0, 1);
+INSERT INTO `ai_books` VALUES (1, 'dsfsdfs', 'dfsdfs', 'dfsdf', '2021-05-03 20:31:25', 1, 10, 0);
+INSERT INTO `ai_books` VALUES (2, NULL, NULL, NULL, NULL, 0, 0, 0);
 
 -- ----------------------------
 -- Table structure for ai_editorials
@@ -67,12 +69,52 @@ CREATE TABLE `ai_loans`  (
   `return_date` datetime(0) NULL DEFAULT NULL,
   `hidden` tinyint(1) NULL DEFAULT 0,
   PRIMARY KEY (`loanId`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of ai_loans
 -- ----------------------------
 INSERT INTO `ai_loans` VALUES (1, '2021-05-03 21:26:16', 1, 0, NULL, 1, '2021-05-03 00:00:00', 0);
+INSERT INTO `ai_loans` VALUES (2, '2021-05-04 21:48:49', 1, 0, 2, 0, '2021-05-04 00:00:00', 0);
+INSERT INTO `ai_loans` VALUES (3, '2021-05-04 21:51:04', 1, 0, 2, 0, '2021-05-04 00:00:00', 0);
+
+-- ----------------------------
+-- Table structure for ai_loans_items
+-- ----------------------------
+DROP TABLE IF EXISTS `ai_loans_items`;
+CREATE TABLE `ai_loans_items`  (
+  `ItemId` int NOT NULL AUTO_INCREMENT,
+  `loanId` int NULL DEFAULT 0,
+  `bookId` int NULL DEFAULT 0,
+  `quantity` int NULL DEFAULT 0,
+  PRIMARY KEY (`ItemId`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of ai_loans_items
+-- ----------------------------
+INSERT INTO `ai_loans_items` VALUES (1, 2, NULL, NULL);
+INSERT INTO `ai_loans_items` VALUES (2, 3, 1, 5);
+
+-- ----------------------------
+-- Table structure for ai_loans_status
+-- ----------------------------
+DROP TABLE IF EXISTS `ai_loans_status`;
+CREATE TABLE `ai_loans_status`  (
+  `statusId` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `class` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `hidden` tinyint NULL DEFAULT NULL,
+  PRIMARY KEY (`statusId`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of ai_loans_status
+-- ----------------------------
+INSERT INTO `ai_loans_status` VALUES (1, 'Borrador', NULL, 0);
+INSERT INTO `ai_loans_status` VALUES (2, 'Entregado', NULL, 0);
+INSERT INTO `ai_loans_status` VALUES (3, 'Regresado', NULL, 0);
+INSERT INTO `ai_loans_status` VALUES (4, 'Cancelado', NULL, 0);
 
 -- ----------------------------
 -- Table structure for ai_returns
@@ -229,6 +271,7 @@ CREATE ALGORITHM = UNDEFINED SQL SECURITY DEFINER VIEW `ai_books_view` AS SELECT
 	a.author,
 	a.edition,
 	a.publication_date,
+	a.quantity,
 	a.hidden
 FROM
 	`ai_books` AS `a`

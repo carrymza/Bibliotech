@@ -9,13 +9,16 @@ class Loans extends APP_Controller
 		$this->namespace   	= 'app';
 
 		$this->load->model('loans/loans_model');
+		$this->load->model('loans/loans_items_model');
+		$this->load->model('loans/loans_status_model');
 		$this->load->model('editorial/editorial_model');
 		$this->load->model('teachers/teachers_model');
 		$this->load->model('students/students_model');
 		$this->load->model('books/books_model');
 
 		$this->people 	= $this->students_model->get_people();
-		$this->books	= $this->books_model->get_assoc_list(array("bookId AS id", "title AS name"), array("hidden" => 0));
+		$this->books	= $this->books_model->get_all_books();
+		$this->status	= $this->loans_status_model->get_assoc_list(array("statusId AS id", "name"), false, false, false, [1,2]);
 	}
 
 	public function index()
@@ -68,12 +71,28 @@ class Loans extends APP_Controller
 				'person_typeId'     => $this->input->post('person_typeId'),
 				'date'				=> timestamp_to_date(gmt_to_local(now(), 'UTC', FALSE), "Y-m-d H:i:s"),
 				'statusId'      	=> $this->input->post('statusId'),
-				'bookId'      		=> $this->input->post('bookId'),
 				'return_date'      	=> $this->input->post('return_date')
 			);
 
-			if($this->loans_model->save($data))
+			if($loanId = $this->loans_model->save($data))
 			{
+				foreach ($_POST['bookId'] AS $key => $value)
+				{
+					$data_item = array(
+						'loanId'	=> $loanId,
+						'bookId'	=> $_POST['bookId'][$key],
+						'quantity'	=> $_POST['quantity'][$key],
+					);
+
+					$this->loans_items_model->save($data_item);
+
+					if($data['statusId'] != 1)
+					{
+						$book = $this->books_model->get_by(array("bookId" => $_POST['bookId'][$key]), true);
+						$this->books_model->save(array("quantity" => $book->quantity - $data_item['quantity']), $_POST['bookId'][$key]);
+					}
+				}
+
 				echo json_encode(array("result" => 1));
 			}
 		}
@@ -98,13 +117,26 @@ class Loans extends APP_Controller
 			$data = array(
 				'personId'    		=> $this->input->post('personId'),
 				'person_typeId'     => $this->input->post('person_typeId'),
+				'date'				=> timestamp_to_date(gmt_to_local(now(), 'UTC', FALSE), "Y-m-d H:i:s"),
 				'statusId'      	=> $this->input->post('statusId'),
-				'bookId'      		=> $this->input->post('bookId'),
 				'return_date'      	=> $this->input->post('return_date')
 			);
 
-			if($this->loans_model->save($data, $loanId))
+			if($loanId = $this->loans_model->save($data, $loanId))
 			{
+				foreach ($_POST['bookId'] AS $key => $value)
+				{
+					$itemId = $_POST[$key]['itemId'];
+
+					$data_item = array(
+						'loanId'	=> $loanId,
+						'bookId'	=> $_POST[$key]['bookId'],
+						'quantity'	=> $_POST[$key]['quantity'],
+					);
+
+					$this->loans_items_model->save($data_item, $itemId);
+				}
+
 				echo json_encode(array("result" => 1));
 			}
 		}
@@ -114,6 +146,20 @@ class Loans extends APP_Controller
 	{
 		if($this->loans_model->save(array('hidden' => 1), $loanId))
 		{
+			echo json_encode(array('result' => 1));
+		}
+	}
+
+	public function cancel($loanId)
+	{
+		if($this->loans_model->save(array('status' => 4), $loanId))
+		{
+			$items = $this->loans_items_model->get_by(array("loanId" => $loanId));
+			foreach ($items AS $row)
+			{
+				$book = $this->books_model->get_by(array("bookId" => $row->bookId), true);
+				$this->books_model->save(array("quantity" => $book->quantity + $row->quantity), $row->bookId);
+			}
 			echo json_encode(array('result' => 1));
 		}
 	}

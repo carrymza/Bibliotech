@@ -1,7 +1,7 @@
 <div class="modal-dialog modal-lg" id="returns" role="document">
 	<div class="modal-content">
 		<div class="modal-header">
-			<h5 class="modal-title" id="myModalLabel"><i class="icon-people p-r-7"></i>Agregar Estudiante <span class="returns-title"></span></h5>
+			<h5 class="modal-title" id="myModalLabel"><i class="ti-package p-r-7"></i>Agregar Estudiante <span class="returns-title"></span></h5>
 			<a href="javascript:void(0);" class="close" data-dismiss="modal" aria-hidden="true"><i class="icon-close"></i></a>
 		</div>
 		<div class="modal-body">

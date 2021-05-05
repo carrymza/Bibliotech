@@ -29,6 +29,7 @@
 												<th>Titulo</th>
 												<th>Autor</th>
 												<th>Edicion</th>
+												<th>Cant. Disponible</th>
 												<th>Acción</th>
 											</tr>
 											</thead>

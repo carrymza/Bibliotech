@@ -14,12 +14,13 @@ class Books_model extends MY_Model
 	{
 		$result = $this->db->query("SELECT * FROM $this->table_name WHERE hidden = 0")->result();
 
-		$option[0] = "Seleccione una Opción";
+		$option[''][0]['name'] = "Seleccione una Opción";
 
 		foreach ($result AS $row)
 		{
-			$option[$row->bookId]['id'] = $row->bookId;
-			$option[$row->bookId]['name'] = $row->name;
+			$option[''][$row->bookId]['id'] 				= $row->bookId;
+			$option[''][$row->bookId]['name'] 				= $row->title;
+			$option[''][$row->bookId]['data']['quantity'] 	= $row->quantity;
 		}
 
 		return $option;

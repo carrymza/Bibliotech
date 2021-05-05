@@ -24,7 +24,7 @@ class Books extends APP_Controller
 	{
 		if($this->input->is_ajax_request())
 		{
-			$columns    		= "bookId,title,author,edition";
+			$columns    		= "bookId,title,author,edition,quantity";
 			$result     		= $this->books_model->datatable($columns, array("hidden" => 0), TRUE);
 			echo json_encode(array('data' => $result));
 		}
@@ -49,6 +49,7 @@ class Books extends APP_Controller
 
 		$this->form_validation->set_rules('title', '<strong>Titulo</strong>', 'trim|required');
 		$this->form_validation->set_rules('author', '<strong>Autor</strong>', 'trim|required');
+		$this->form_validation->set_rules('quantity', '<strong>Cantidad disponible</strong>', 'trim|required');
 
 		$valid           = ($valid != FALSE) ? $this->form_validation->run($this) : $valid;
 		$error          .= validation_errors();
@@ -65,6 +66,7 @@ class Books extends APP_Controller
 				'edition'     		=> $this->input->post('edition'),
 				'publication_date' 	=> $this->input->post('publication_date'),
 				'editorialId' 		=> $this->input->post('editorialId'),
+				'quantity' 			=> $this->input->post('quantity'),
 			);
 
 			if($this->books_model->save($data))
@@ -81,6 +83,7 @@ class Books extends APP_Controller
 
 		$this->form_validation->set_rules('title', '<strong>Titulo</strong>', 'trim|required');
 		$this->form_validation->set_rules('author', '<strong>Autor</strong>', 'trim|required');
+		$this->form_validation->set_rules('quantity', '<strong>Cantidad disponible</strong>', 'trim|required');
 
 		$valid           = ($valid != FALSE) ? $this->form_validation->run($this) : $valid;
 		$error          .= validation_errors();
@@ -97,6 +100,7 @@ class Books extends APP_Controller
 				'edition'     		=> $this->input->post('edition'),
 				'publication_date' 	=> $this->input->post('publication_date'),
 				'editorialId' 		=> $this->input->post('editorialId'),
+				'quantity' 			=> $this->input->post('quantity'),
 			);
 
 			if($this->books_model->save($data, $bookId))
