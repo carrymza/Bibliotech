@@ -13,8 +13,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $config['modules_locations'] = array(
 	APPPATH.'modules/components/'       => '../modules/components/',
 	APPPATH.'modules/app/'       		=> '../modules/app/',
-	APPPATH.'modules/parents/'       	=> '../modules/parents/',
-	APPPATH.'modules/admin/'       		=> '../modules/admin/',
 );
 
 /*
@@ -39,7 +37,7 @@ $config['modules_locations'] = array(
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = '';
+$config['base_url'] = 'http://ragtireautocenter.me/';
 
 /*
 |--------------------------------------------------------------------------
