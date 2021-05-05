@@ -50,6 +50,8 @@ class Students extends APP_Controller
 
 		$this->form_validation->set_rules('first_name', '<strong>Nombre</strong>', 'trim|required');
 		$this->form_validation->set_rules('last_name', '<strong>Apellido</strong>', 'trim|required');
+		$this->form_validation->set_rules('doc_typeId', '<strong>Tipo de documento</strong>', 'trim|required');
+		$this->form_validation->set_rules('document', '<strong>Documento</strong>', 'trim|required');
 		$this->form_validation->set_rules('email', '<strong>Email</strong>', 'trim|required');
 
 		$valid           = ($valid != FALSE) ? $this->form_validation->run($this) : $valid;
@@ -86,6 +88,8 @@ class Students extends APP_Controller
 
 		$this->form_validation->set_rules('first_name', '<strong>Nombre</strong>', 'trim|required');
 		$this->form_validation->set_rules('last_name', '<strong>Apellido</strong>', 'trim|required');
+		$this->form_validation->set_rules('doc_typeId', '<strong>Tipo de documento</strong>', 'trim|required');
+		$this->form_validation->set_rules('document', '<strong>Documento</strong>', 'trim|required');
 		$this->form_validation->set_rules('email', '<strong>Email</strong>', 'trim|required');
 
 		$valid           = ($valid != FALSE) ? $this->form_validation->run($this) : $valid;
