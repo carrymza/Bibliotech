@@ -46,7 +46,10 @@ class Loans extends APP_Controller
 
 	public function edit($loanId)
 	{
-		$data['row'] = $this->loans_model->get($loanId);
+		$data = array(
+			"row" 	=> $this->loans_model->get($loanId),
+			"items" => $this->loans_items_model->get_by(array("loanId" => $loanId, "hidden" => 0))
+		);
 		echo json_encode(array('result' => 1, 'view' => $this->load->view('loans/loans_edit_view', $data, TRUE)));
 	}
 

@@ -11,7 +11,7 @@
  Target Server Version : 100414
  File Encoding         : 65001
 
- Date: 04/05/2021 21:54:00
+ Date: 04/05/2021 22:03:24
 */
 
 SET NAMES utf8mb4;
@@ -87,14 +87,15 @@ CREATE TABLE `ai_loans_items`  (
   `loanId` int NULL DEFAULT 0,
   `bookId` int NULL DEFAULT 0,
   `quantity` int NULL DEFAULT 0,
+  `hidden` tinyint(1) NULL DEFAULT 0,
   PRIMARY KEY (`ItemId`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of ai_loans_items
 -- ----------------------------
-INSERT INTO `ai_loans_items` VALUES (1, 2, NULL, NULL);
-INSERT INTO `ai_loans_items` VALUES (2, 3, 1, 5);
+INSERT INTO `ai_loans_items` VALUES (1, 2, NULL, NULL, 0);
+INSERT INTO `ai_loans_items` VALUES (2, 3, 1, 5, 0);
 
 -- ----------------------------
 -- Table structure for ai_loans_status

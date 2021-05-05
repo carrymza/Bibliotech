@@ -97,16 +97,7 @@
 	$(document).ready(function () {
 		let loansForm = $('#loans-form').formValid({
 			fields: {
-				"first_name": {
-					"required": true,
-					"tests": [
-						{
-							"type"		: "null",
-							"message"	: "Este campo es requerido"
-						}
-					]
-				},
-				"last_name": {
+				"return_date": {
 					"required": true,
 					"tests": [
 						{
