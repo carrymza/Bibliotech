@@ -55,7 +55,7 @@
 						<span class="ladda-spinner"></span>
 					</button>
 				</form>
-				<a href="<?php echo base_url();?>session/recover">¿Olvido su contraseña?</a>
+<!--				<a href="--><?php //echo base_url();?><!--session/recover">¿Olvido su contraseña?</a>-->
 			</div>
 		</div>
 	</div>
