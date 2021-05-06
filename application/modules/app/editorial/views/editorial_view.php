@@ -8,7 +8,7 @@
 						<div>
 							<ul class="breadcrumb">
 								<li class="breadcrumb-item"><a href="javascript:void(0);">Generales</a></li>
-								<li class="breadcrumb-item active"><a href="javascript:void(0);">Editoriales</a></li>
+								<li class="breadcrumb-item active"><a href="javascript:void(0);">Editoras</a></li>
 							</ul>
 						</div>
 					</div>
