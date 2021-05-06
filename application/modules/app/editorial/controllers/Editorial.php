@@ -5,7 +5,7 @@ class Editorial extends APP_Controller
 	public function __construct()
 	{
 		parent::__construct();
-		$this->title       	= 'Editoriales';
+		$this->title       	= 'Editoras';
 		$this->namespace   	= 'app';
 
 		$this->load->model('editorial/editorial_model');
