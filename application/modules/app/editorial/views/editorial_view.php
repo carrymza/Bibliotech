@@ -4,11 +4,11 @@
 			<div class="page-wrapper">
 				<div class="page-header row">
 					<div class="col-md-8 page-header-title">
-						<h4>Editoriales</h4>
+						<h4>Editorass</h4>
 						<div>
 							<ul class="breadcrumb">
 								<li class="breadcrumb-item"><a href="javascript:void(0);">Generales</a></li>
-								<li class="breadcrumb-item active"><a href="javascript:void(0);">Editoriales</a></li>
+								<li class="breadcrumb-item active"><a href="javascript:void(0);">Editoras</a></li>
 							</ul>
 						</div>
 					</div>
