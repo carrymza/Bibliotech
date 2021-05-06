@@ -36,7 +36,7 @@
 						</div>
 						<div class="div">
 							<h5>Email</h5>
-							<input type="email" name="email" class="input" data-field="email">
+							<input type="email" name="email" value="edelacruz9713@gmail.com" class="input" data-field="email">
 							<span class="valid-message"></span>
 						</div>
 					</div>
@@ -46,7 +46,7 @@
 						</div>
 						<div class="div">
 							<h5>Contraseña</h5>
-							<input type="password" name="password" class="input" data-field="password">
+							<input type="password" name="password" value="123456" class="input" data-field="password">
 							<span class="valid-message"></span>
 						</div>
 					</div>

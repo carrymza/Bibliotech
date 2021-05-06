@@ -77,7 +77,7 @@
 										</a>
 									</li>
 									<li>
-										<a href="#">
+										<a href="<?php echo base_url('logout');?>">
 											<i class="ti-shift-right"></i> Cerrar Sesión
 										</a>
 									</li>
