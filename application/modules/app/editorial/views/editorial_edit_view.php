@@ -1,7 +1,7 @@
 <div class="modal-dialog modal-lg" id="editorial" role="document">
 	<div class="modal-content">
 		<div class="modal-header">
-			<h5 class="modal-title" id="myModalLabel"><i class="ti-package p-r-7"></i>Editar Editorial  <span class="editorial-title">/ <?php echo $row->name;?></span></h5>
+			<h5 class="modal-title" id="myModalLabel"><i class="ti-package p-r-7"></i>Editar Editora  <span class="editorial-title">/ <?php echo $row->name;?></span></h5>
 			<a href="javascript:void(0);" class="close" data-dismiss="modal" aria-hidden="true"><i class="icon-close"></i></a>
 		</div>
 		<div class="modal-body">
