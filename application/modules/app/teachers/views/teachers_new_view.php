@@ -35,10 +35,13 @@
 								</div>
 								<div class="row form-group">
 									<div class="col-md-3 text-right">
-										<label for="typeId" class="label-style l-h-40">Editorial:</label>
+										<label for="doc_typeId" class="label-style l-h-40">Tipo de documento:</label>
 									</div>
-									<div class="col-md-7 alpha">
-										<?php echo form_dropdown('editorialId', $this->editorials, set_value('editorialId', 0), "id='editorialId' class='form-control select2'");?>
+									<div class="col-md-3 alpha">
+										<?php echo form_dropdown('doc_typeId', $this->document_type, set_value('doc_typeId', 0), "id='doc_typeId' class='form-control select2'");?>
+									</div>
+									<div class="col-md-4 alpha">
+										<input type="text" class="form-control" data-field="document" value="" name="document" id="document">
 										<span class="valid-message"></span>
 									</div>
 								</div>

@@ -9,6 +9,9 @@ class Teachers extends APP_Controller
 		$this->namespace   	= 'app';
 
 		$this->load->model('teachers/teachers_model');
+		$this->load->model('students/type_documents_model');
+
+		$this->document_type 	= $this->type_documents_model->get_assoc_list(array('typeId AS id', 'name'), array("hidden" => 0));
 	}
 
 	public function index()
